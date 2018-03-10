@@ -1,0 +1,16 @@
+{% from "mattermost/map.jinja" import mattermost with context %}
+
+[Unit]
+Description=Mattermost
+After=syslog.target network.target {{ mattermost.sql_service }}.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mattermost
+User=mattermost
+ExecStart=/opt/mattermost/bin/platform
+PIDFile=/var/spool/mattermost/pid/master.pid
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target

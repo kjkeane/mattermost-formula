@@ -1,0 +1,11 @@
+{% set mattermost = salt['grains.filter_by']({
+  'default': {
+    'version': '4.7.3',
+    'config_file': '/opt/mattermost/config/config.json',
+    'config_file_source': 'salt://mattermost/templates/mattermost.jinja',
+    'sql_service': 'postgresql-9.4',
+    'user': 'mattermost',
+    'group': 'mattermost',
+    'service': 'mattermost',
+  },
+}, merge=salt['pillar.get']('mattermost:lookup'), base='default') %}
