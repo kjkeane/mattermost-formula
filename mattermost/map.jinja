@@ -1,6 +1,7 @@
 {% set mattermost = salt['grains.filter_by']({
   'RedHat': {
     'version': '4.7.3',
+    'install_dir': '/opt',
     'config_file': '/opt/mattermost/config/config.json',
     'config_file_source': 'salt://mattermost/templates/mattermost.jinja',
     'service_file_path': '/etc/systemd/system/mattermost.service',
@@ -11,6 +12,7 @@
   },
   'Debian': {
     'version': '4.7.3',
+    'install_dir': '/opt',
     'config_file': '/opt/mattermost/config/config.json',
     'config_file_source': 'salt://mattermost/templates/mattermost.jinja',
     'service_file_path': '/lib/systemd/system/mattermost.service',
