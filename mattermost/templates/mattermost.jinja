@@ -97,21 +97,21 @@
        "QueryTimeout": {{ salt['pillar.get']('mattermost:sql-settings:query-timeout', '30') }}
    },
    "LogSettings": {
-       "EnableConsole": true,
-       "ConsoleLevel": "INFO",
-       "EnableFile": true,
-       "FileLevel": "INFO",
-       "FileFormat": "",
-       "FileLocation": "",
-       "EnableWebhookDebugging": true,
-       "EnableDiagnostics": true
+       "EnableConsole": {{ salt['pillar.get']('mattermost:log:enable-console', 'true') }},
+       "ConsoleLevel": "{{ salt['pillar.get']('mattermost:log:console-level', 'INFO') }}",
+       "EnableFile": {{ salt['pillar.get']('mattermost:log:enable-file', 'true') }},
+       "FileLevel": "{{ salt['pillar.get']('mattermost:log:file-level', 'INFO') }}",
+       "FileFormat": "{{ salt['pillar.get']('mattermost:log:file-format', '') }}",
+       "FileLocation": "{{ salt['pillar.get']('mattermost:log:file-location', '') }}",
+       "EnableWebhookDebugging": {{ salt['pillar.get']('mattermost:log:enable-webhook-debug', 'true') }},
+       "EnableDiagnostics": {{ salt['pillar.get']('mattermost:log:enable-diagnostics', 'true') }}
    },
    "PasswordSettings": {
-       "MinimumLength": 5,
-       "Lowercase": false,
-       "Number": false,
-       "Uppercase": false,
-       "Symbol": false
+       "MinimumLength": {{ salt['pillar.get']('mattermost:password:minimum-length', '5') }},
+       "Lowercase": {{ salt['pillar.get']('mattermost:password:lowercase', 'false') }},
+       "Number": {{ salt['pillar.get']('mattermost:password:number', 'false') }},
+       "Uppercase": {{ salt['pillar.get']('mattermost:password:uppercase', 'false') }},
+       "Symbol": {{ salt['pillar.get']('mattermost:password:symbol', 'false') }}
    },
    "FileSettings": {
        "EnableFileAttachments": true,
