@@ -56,10 +56,10 @@
        "EnableTeamCreation": {{ salt['pillar.get']('mattermost:team:team-creation', 'true') }},
        "EnableUserCreation": {{ salt['pillar.get']('mattermost:team:user-creation', 'true') }},
        "EnableOpenServer": {{ salt['pillar.get']('mattermost:team:open-server', 'false') }},
-       "RestrictCreationToDomains": {{ salt['pillar.get']('mattermost:team:restrict-creation-domains', '""') }},
+       "RestrictCreationToDomains": "{{ salt['pillar.get']('mattermost:team:restrict-creation-domains', '') }}",
        "EnableCustomBrand": {{ salt['pillar.get']('mattermost:team:enable-custom-brand', 'false') }},
-       "CustomBrandText": {{ salt['pillar.get']('mattermost:team:custom-brand-text', '""') }},
-       "CustomDescriptionText": {{ salt['pillar.get']('mattermost:team:custom-decsription-text', '""') }},
+       "CustomBrandText": "{{ salt['pillar.get']('mattermost:team:custom-brand-text', '') }}",
+       "CustomDescriptionText": "{{ salt['pillar.get']('mattermost:team:custom-decsription-text', '') }}",
        "RestrictDirectMessage": "{{ salt['pillar.get']('mattermost:team:restrict-direct-message', 'any') }}",
        "RestrictTeamInvite": "{{ salt['pillar.get']('mattermost:team:restrict-team-invite', 'all') }}",
        "RestrictPublicChannelManagement": "{{ salt['pillar.get']('mattermost:team:restrict-public-manage', 'all') }}",
@@ -86,15 +86,15 @@
        "IosMinVersion": ""
    },
    "SqlSettings": {
-       "DriverName": "mysql",
-       "DataSource": "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s",
-       "DataSourceReplicas": [],
-       "DataSourceSearchReplicas": [],
-       "MaxIdleConns": 20,
-       "MaxOpenConns": 300,
-       "Trace": false,
-       "AtRestEncryptKey": "",
-       "QueryTimeout": 30
+       "DriverName": "{{ salt['pillar.get']('mattermost:sql-settings:drivername', 'mysql') }}",
+       "DataSource": "{{ salt['pillar.get']('mattermost:sql-settings:datasource', 'mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s') }}",
+       "DataSourceReplicas": [{{ salt['pillar.get']('mattermost:sql-settings:datasource-replicas', '') }}],
+       "DataSourceSearchReplicas": [{{ salt['pillar.get']('mattermost:sql-settings:datasource-search', '') }}],
+       "MaxIdleConns": {{ salt['pillar.get']('mattermost:sql-settings:max-idle-connections', '20') }},
+       "MaxOpenConns": {{ salt['pillar.get']('mattermost:sql-settings:max-open-connections', '300') }},
+       "Trace": {{ salt['pillar.get']('mattermost:sql-settings:trace', 'false') }},
+       "AtRestEncryptKey": "{{ salt['pillar.get']('mattermost:sql-settings:at-rest-encrypt-key', '') }}",
+       "QueryTimeout": {{ salt['pillar.get']('mattermost:sql-settings:query-timeout', '30') }}
    },
    "LogSettings": {
        "EnableConsole": true,
