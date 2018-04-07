@@ -159,12 +159,12 @@
        "EmailNotificationContentsType": "{{ salt['pillar.get']('mattermost:email:email-content-type', 'full') }}"
    },
    "RateLimitSettings": {
-       "Enable": false,
-       "PerSec": 10,
-       "MaxBurst": 100,
-       "MemoryStoreSize": 10000,
-       "VaryByRemoteAddr": true,
-       "VaryByHeader": ""
+       "Enable": {{ salt['pillar.get']('mattermost:rate-limit:enable', 'false') }},
+       "PerSec": {{ salt['pillar.get']('mattermost:rate-limit:persec', '10') }},
+       "MaxBurst": {{ salt['pillar.get']('mattermost:rate-limit:max-burst', '100') }},
+       "MemoryStoreSize": {{ salt['pillar.get']('mattermost:rate-limit:memory-store-size', '10000') }},
+       "VaryByRemoteAddr": {{ salt['pillar.get']('mattermost:rate-limit:varyby-remote-addr', 'true') }},
+       "VaryByHeader": "{{ salt['pillar.get']('mattermost:rate-limit:varyby-header', '') }}"
    },
    "PrivacySettings": {
        "ShowEmailAddress": true,
