@@ -1,0 +1,68 @@
+mattermost:
+  service-settings:
+    siteurl: # mattermost siteurl
+    websocketurl:
+    license-file-location:
+    listen-address: '8065' # mattermost listen address
+    connection-security:
+    tls-cert-file: '/path/to/cert'
+    tls-key-file: '/path/to/key'
+    letsencrypt: False # enable/disable letsencrypt
+    letsencrypt-cache-file: '/.config/letsencrypt.cache'
+    forward-to-https: False # forward 80 to 443
+    read-timeout: 300
+    write-timeout: 300
+    login-attempts: 10
+    google-developer-key:
+    enable-oauth: False
+    enable-incoming-webwhooks: True
+    enable-outgoing-webhooks: True
+    enable-commands: True
+    admin-integrations: True
+    username-override: False
+    icon-override: False
+    apiv3: True
+    link-previews: False
+    enable-testing: False
+    enable-developer: False
+    security-fix-alert: True
+    insecure-connections: False
+    internal-connections:
+    enable-mfa: False
+    enforce-mfa: False
+    enable-user-tokens: False
+    allow-cors-from:
+    allow-cookies-subdomain: False
+    session-length-web-days: 30
+    session-length-mobile-days: 30
+    session-length-sso-days: 30
+    session-cache-minutes: 10
+    session-idle-minutes: 10
+    websocket-secure-port: 443
+    websocket-port: 80
+    webserver-mode: gzip
+    custom-emoji: False
+    emoji-picker: True
+    restrict-emoji-creation: all
+    restrict-post-delete: all
+    allow-post-edit: always
+    post-edit-time: 300
+    enable-authentication-transfer: True
+    user-typing-updates: 5000
+    post-search: True
+    user-typing-messages: True
+    channel-viewed-message: True
+    enable-user-statuses: True
+    cluster-log-timeout: 2000
+    enable-preview-features: True
+    close-unused-direct-messages: False
+    enable-tutorial: True
+    default-channel-leave-join-messages: True
+    group-unread-channels: disabled
+    image-proxy-type:
+    image-proxy-options:
+    image-proxy-url:
+
+  team-settings:
+    site-name: 'Mattermost'
+    max-users: 50
