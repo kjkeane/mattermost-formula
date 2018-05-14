@@ -161,8 +161,8 @@
    },
 {% email = mattermost.get('email-settings', {}) %}
    "EmailSettings": {
-       "EnableSignUpWithEmail": {{ email.get('signup-withemail', 'true') }},
-       "EnableSignInWithEmail": {{ email.get('signin-withe-mail', 'true') }},
+       "EnableSignUpWithEmail": {{ email.get('signup-with-email', 'true') }},
+       "EnableSignInWithEmail": {{ email.get('signin-with-email', 'true') }},
        "EnableSignInWithUsername": {{ email.get('signin-with-username', 'true') }},
        "SendEmailNotifications": {{ email.get('email-notifications', 'false') }},
        "UseChannelInEmailNotifications": {{ email.get('channel-notifications', 'false') }},
