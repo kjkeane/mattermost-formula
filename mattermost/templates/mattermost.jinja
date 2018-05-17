@@ -147,7 +147,7 @@
        "DriverName": "{{ file.get('drivername', 'local') }}",
        "Directory": "{{ file.get('directory', './data/') }}",
        "EnablePublicLink": {{ file.get('enable-public-link', 'false') }},
-       "PublicLinkSalt": "{{ file.get('public-link-salt', '') }}",
+       "PublicLinkSalt": "",
        "InitialFont": "luximbi.ttf",
        "AmazonS3AccessKeyId": "{{ file.get('amazons3-key-id', '') }}",
        "AmazonS3SecretAccessKey": "{{ file.get('amazons3-secret-key', '') }}",
@@ -370,7 +370,7 @@
        "IndexPrefix": "{{ elasticsearch.get('index-prefix', '') }}",
        "LiveIndexingBatchSize": {{ elasticsearch.get('live-index-batch-size', '1') }},
        "BulkIndexingTimeWindowSeconds": {{ elasticsearch.get('bulk-indexing-time', '3600') }},
-       "RequestTimeoutSeconds": {{ elasticsearch.get('request-timeoute', '30') }}
+       "RequestTimeoutSeconds": {{ elasticsearch.get('request-timeout', '30') }}
    },
 {% data_retention = mattermost.get('data-retention-settings', {}) %}
    "DataRetentionSettings": {
@@ -380,6 +380,7 @@
        "FileRetentionDays": {{ data_retention.get('file-retention', '365') }},
        "DeletionJobStartTime": "{{ data_retention.get('deletion-start-time', '02:00') }}"
    },
+{% export = mattermost.get('message-export-settings', {}) %}
    "MessageExportSettings": {
        "EnableExport": {{ export.get('enable', 'false') }},
        "DailyRunTime": "{{ export.get('daily-runtime', '01:00') }}",

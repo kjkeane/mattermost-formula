@@ -66,3 +66,288 @@ mattermost:
   team-settings:
     site-name: 'Mattermost'
     max-users: 50
+    enable-team-creation: True
+    enable-user-creation: True
+    open-server: False
+    restrict-creation-domains:
+    enable-custom-brand: False
+    custom-description-text:
+    restrict-direct-message: any
+    restrict-team-invite: all
+    restrict-public-manage: all
+    restrict-private-manage: all
+    restrict-public-create: all
+    restrict-private-create: all
+    restrict-public-delete: all
+    restrict-private-delete: all
+    restrict-private-members: all
+    enable-x-leave-channel: False
+    user-away-timeout: 300
+    max-channels-per-team: 2000
+    max-notifications: 1000
+    enable-confirm-notifications: True
+    teammate-name-display: username
+    read-only: False
+    primary-team:
+
+  display-settings:
+    experimental-timezone: False
+
+  sql-settings:
+    drivername: mysql
+    datasource: 'mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTime    out=30s&writeTimeout=30s'
+    datasource-replicas:
+    datasource-search:
+    max-idle-connections: 20
+    trace: False
+    at-rest-encrypt-key:
+    query-timeout: 30
+
+  log-settings:
+    enable-console: True
+    console-level: INFO
+    enable-file: true
+    file-level: INFO
+    file-format:
+    file-location:
+    enable-webhook-debug: True
+    enable-diagnostics: True
+
+  password-settings:
+    minimum-length: 5
+    lowercase: False
+    uppercase: False
+    symbol: False
+
+  file-settings:
+    enable-attachments: True
+    enable-mobile-upload: True
+    enable-mobile-download: True
+    maxfile-size: 52428800
+    drivername: local
+    directory: './data/'
+    enable-public-link: False
+    amazons3-key-id:
+    amazons3-secret-key:
+    amazons3-bucket:
+    amazons3-region:
+    amazons3-endpoint:
+    amazons3-ssl: True
+    amazons3-signv2: False
+    amazons3-sse: False
+    amazons3-trace: False
+
+  email-settings:
+    signup-with-email: True
+    signin-with-email: True
+    signin-with-username: True
+    email-notifications: False
+    channel-notifications: False
+    email-verification: False
+    feedback-name:
+    feedback-email:
+    feedback-organization:
+    enable-smtp-auth: False
+    smtp-username:
+    smtp-password:
+    smtp-server:
+    smtp-port:
+    connection-security: TLS # None, TLS, or STARTTLS
+    invite-salt:
+    send-push-notifications: False
+    push-notification-server:
+    push-notification-contents: generic
+    enable-email-batching: False
+    batch-buffer-size: 256
+    batch-interval: 30
+    skip-server-cert-validation: False
+    content-type: full
+    login-button-color:
+    login-button-border-color:
+    login-button-text-color:
+
+  rate-limit-settings:
+    enable: False
+    persec: 10
+    max-burst: 100
+    memory-store-size: 10000
+    varyby-remote-addr: True
+    varby-header:
+
+  privacy-settings:
+    show-email: True
+    show-name: True
+
+  support-settings:
+    tos-link: 'https://about.mattermost.com/default-terms/'
+    privacy-link: 'https://about.mattermost.com/default-privacy-policy/'
+    about-link: 'https://about.mattermost.com/default-about/'
+    help-link: 'https://about.mattermost.com/default-help/'
+    problem-link: 'https://about.mattermost.com/default-report-a-problem/'
+    support-email: 'feedback@mattermost.com'
+
+  announcement-settings:
+    enable-banner: False
+    banner-text:
+    banner-color: '#f2a93b'
+    banner-text-color: '#333333'
+    allow-banner-dismissal: True
+
+  theme-settings:
+    enable-theme-selection: True
+    default-theme: default
+    allow-custom-themes: True
+    allowed-themes:
+
+  gitlab-settings:
+    enable: False
+    secret:
+    id:
+    scope:
+    auth-endpoint:
+    token-endpoint:
+    user-api-endpoint:
+
+  google-settings:
+    enable: False
+    secret:
+    id: 
+    scope: 'profile email'
+    auth-endpoint: 'https://accounts.google.com/o/oauth2/v2/auth'
+    token-endpoint: 'https://accounts.google.com/o/oauth2/v4/token'
+    user-api-endpoint: 'https://acounts.google.com/plus/v1/people/me'
+
+  office365-settings:
+    enable: False
+    secret:
+    id: 
+    scope: 'User.Read'
+    auth-endpoint: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize'
+    token-endpoint: 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+    user-api-endpoint: 'https://graph.microsoft.com/v1.0/me'
+
+  ldap-settings:
+    enable: False
+    enable-sync: False
+    ldap-server:
+    ldap-port: 389
+    connection-security:
+    base-dn:
+    bind-username:
+    bind-password:
+    user-filter:
+    first-name-attribute:
+    last-name-attribute:
+    email-attribute:
+    username-attribute:
+    nickname-attribute:
+    id-attribute:
+    position-attribute:
+    sync-interval: 60
+    skip-cert-verify: False
+    query-timeout: 60
+    max-page-size: 0
+    login-field-name:
+
+  compliance-settings:
+    enable: False
+    directory: './data/'
+    enable-daily: False
+
+  localization-settings:
+    default-server-locale: 'en'
+    default-client-locale: 'en'
+    available-locale:
+
+  saml-settings:
+    enable: False
+    enable-ldap-sync: False
+    verify: True
+    Encrypt: True
+    id-url:
+    idp-descriptor-url:
+    assertion-consumer-service-url:
+    idp-cert-file:
+    public-cert-file:
+    private-key-file:
+    first-name-attribute:
+    last-name-attribute:
+    email-attribute:
+    nickname-attribute:
+    username-attribute:
+    locale-attribute:
+    postition-attribute:
+    login-button-text:
+
+  native-app-settings:
+    app-download-link: 'https://about.mattermost.com/downloads'
+    android-download-link: 'https://about.mattermost.com/mattermost-android-app'
+    ios-download-link: 'https://about.mattermost.com/mattermost-ios-app'
+
+  cluster-settings:
+    enable: False
+    name:
+    override-hostname:
+    use-ipaddress: True
+    use-experimental-gossip: False
+    read-only-config: True
+    gossip-port: 8074
+    streaming-port: 8075
+
+  metric-settings:
+    enable: False
+    block-profile-rate: 0
+    listen-address: 8067
+
+  analytics-settings:
+    max-users: 2500
+
+  web-rtc-settings:
+    enable: False
+    gateway-websocket-url:
+    gateway-admin-url:
+    gateway-admin-secret:
+    stun-uri:
+    turn-uri:
+    turn-username:
+    turn-shared-key:
+
+  elasticsearch-settings
+    connection-url: 'http://dockerhost:9200'
+    username: elastic
+    password: changeme
+    enable-indexing: False
+    enable-searching: False
+    sniff: True
+    post-index-replicas: 1
+    post-index-shards: 1
+    aggregate-posts-after-days: 365
+    posts-aggrator-start-time: '03:00'
+    index-prefix:
+    live-index-batch-size: 1
+    bulk-indexing-time: 3600
+    request-timeout: 30
+
+  data-retention-settings:
+    enable-message-deletion: False
+    enable-file-deletion: False
+    message-retention: 365
+    file-retention: 365
+    deletion-start-time: '02:00'
+
+  message-export-settings:
+    enable: False
+    daily-runtime: '01:00'
+    export-timestamp: 0
+    file-location: export
+    batch-size: 10000
+
+  job-settings:
+    run-jobs: True
+    run-scheduler: True
+
+  plugin-settings:
+    enable: True
+    enable-uploads: False
+    directory: './plugins'
+
