@@ -92,6 +92,7 @@
        "MaxNotificationsPerChannel": {{ team.get('max-notifications', '1000') }},
        "EnableConfirmNotificationsToChannel": {{ team.get('enable-confirm-notifications', 'true') }},
        "TeammateNameDisplay": "{{ team.get('teammate-name-display', 'username') }}",
+       "ExperimentalEnableAutomaticReplies": {{ team.get('automatic-replies', 'false', ) }},
        "ExperimentalTownSquareIsReadOnly": {{ team.get('read-only', 'false') }},
        "ExperimentalPrimaryTeam": "{{ team.get('primary-team', '') }}"
    },
@@ -125,7 +126,7 @@
        "ConsoleLevel": "{{ log.get('console-level', 'INFO') }}",
        "EnableFile": {{ log.get('enable-file', 'true') }},
        "FileLevel": "{{ log.get('file-level', 'INFO') }}",
-       "FileFormat": "{{ log.get('file-format', '') }}",
+       "FileJson": "{{ log.get('file-json', 'true') }}",
        "FileLocation": "{{ log.get('file-location', '') }}",
        "EnableWebhookDebugging": {{ log.get('enable-webhook-debug', 'true') }},
        "EnableDiagnostics": {{ log.get('enable-diagnostics', 'true') }}
@@ -152,7 +153,7 @@
        "AmazonS3AccessKeyId": "{{ file.get('amazons3-key-id', '') }}",
        "AmazonS3SecretAccessKey": "{{ file.get('amazons3-secret-key', '') }}",
        "AmazonS3Bucket": "{{ file.get('amazons3-bucket', '') }}",
-       "AmazonS3Region": "{{ file.get('amazons3-region', 'us-east-1') }}",
+       "AmazonS3Region": "{{ file.get('amazons3-region', '') }}",
        "AmazonS3Endpoint": "{{ file.get('amazons3-endpoint', 's3.amazonaws.com') }}",
        "AmazonS3SSL": {{ file.get('amazons3-ssl', 'true') }},
        "AmazonS3SignV2": {{ file.get('amazons3-signv2', 'false') }},
@@ -196,6 +197,7 @@
        "MaxBurst": {{ rate_limit.get('max-burst', '100') }},
        "MemoryStoreSize": {{ rate_limit.get('memory-store-size', '10000') }},
        "VaryByRemoteAddr": {{ rate_limit.get('varyby-remote-addr', 'true') }},
+       "VaryByUser": {{ rate_limit.get('varyby-user', 'false') }}"
        "VaryByHeader": "{{ rate_limit.get('varyby-header', '') }}"
    },
 {% set privacy = mattermost.get('privacy-settings', {}) %}
