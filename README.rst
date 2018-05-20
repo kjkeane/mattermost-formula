@@ -22,13 +22,13 @@ Install, configure, and run ``mattermost`` service.
 ``mattermost.install``
 ----------------------
 
-Install ``mattermost`` from https://releases.mattermost.com/4.9.2/mattermost-team-4.9.2-linux-amd64.tar.gz
+Install ``mattermost`` from https://releases.mattermost.com/4.10.0/mattermost-team-4.10.0-linux-amd64.tar.gz
 
 ``mattermost.config``
 ---------------------
 
 Currently, a majority of options can be set using the pillar, but here are few important settings:
-(More settings can be found [here](https://docs.mattermost.com/administration/config-settings.html#general))
+(More settings can be found `here <https://docs.mattermost.com/administration/config-settings.html#general>`_)
 
 - ServiceSettings
 
