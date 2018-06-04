@@ -1,4 +1,7 @@
 mattermost:
+  global:
+    enabled: True # enable Mattermost service
+
   service-settings:
     siteurl: # mattermost siteurl
     websocketurl:
