@@ -1,9 +1,8 @@
 {% from "mattermost/map.jinja" import mattermost with context %}
 
-{% set service_file = salt['pillar.get']('mattermost:global:service_file_path', mattermost.service_file_path) %}
 mattermost_systemd:
   file.managed:
-    - name: {{ service_file }}
+    - name: {{ mattermost.service_file_path }}
     - user: root
     - group: root
     - mode: 644
