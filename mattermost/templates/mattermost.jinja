@@ -342,7 +342,7 @@
        "GossipPort": {{ cluster.get('gossip-port', '8074') }},
        "StreamingPort": {{ cluster.get('streaming-port', '8075') }},
        "MaxIdleConns": {{ cluster.get('max-idle-connections', '100') }},
-       "MaxIdleConnsPerHost": {{ cluster.get('max-idle-connections', '120') }},
+       "MaxIdleConnsPerHost": {{ cluster.get('max-idle-conns-per-host', '120') }},
        "IdleConnTimeoutMilliseconds": {{ cluster.get('idle-connections-milliseconds', '90000') }}
    },
 {% metric = mattermost.get('metric-settings', {}) %}
