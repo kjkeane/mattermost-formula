@@ -65,6 +65,8 @@ mattermost:
     image-proxy-type:
     image-proxy-options:
     image-proxy-url:
+    api-team-deletion: False
+    enable-hardened-mode: False
 
   team-settings:
     site-name: 'Mattermost'
@@ -90,6 +92,7 @@ mattermost:
     max-notifications: 1000
     enable-confirm-notifications: True
     teammate-name-display: username
+    hide-town-square: False
     read-only: False
     primary-team:
 
@@ -246,6 +249,7 @@ mattermost:
     nickname-attribute:
     id-attribute:
     position-attribute:
+    login-id-attribute:
     sync-interval: 60
     skip-cert-verify: False
     query-timeout: 60
@@ -296,6 +300,9 @@ mattermost:
     read-only-config: True
     gossip-port: 8074
     streaming-port: 8075
+    max-idle-connections: 100
+    max-idle-conns-per-host: 120
+    idle-connections-milliseconds: 90000
 
   metric-settings:
     enable: False
