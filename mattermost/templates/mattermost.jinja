@@ -64,7 +64,9 @@
        "ExperimentalGroupUnreadChannels": "{{ service.get('group-unread-channels', 'disabled') }}",
        "ImageProxyType": "{{ service.get('image-proxy-type', '') }}",
        "ImageProxyOptions": "{{ service.get('image-proxy-options', '') }}",
-       "ImageProxyURL": "{{ service.get('image-proxy-url', '') }}"
+       "ImageProxyURL": "{{ service.get('image-proxy-url', '') }}",
+       "EnableAPITeamDeletion": {{ service.get('api-team-deletion', 'false') }},
+       "ExperimentalEnableHardenedMode": {{ service.get('enable-hardened-mode', 'false') }}
    },
 {% team = mattermost.get('team-settings', {}) %}
    "TeamSettings": {
@@ -92,12 +94,14 @@
        "MaxNotificationsPerChannel": {{ team.get('max-notifications', '1000') }},
        "EnableConfirmNotificationsToChannel": {{ team.get('enable-confirm-notifications', 'true') }},
        "TeammateNameDisplay": "{{ team.get('teammate-name-display', 'username') }}",
-       "ExperimentalEnableAutomaticReplies": {{ team.get('automatic-replies', 'false', ) }},
+       "ExperimentalEnableAutomaticReplies": {{ team.get('automatic-replies', 'false') }},
+       "ExperimentlaHideTownSquareinLHS": {{ team.get('hide-town-square', 'false') }},
        "ExperimentalTownSquareIsReadOnly": {{ team.get('read-only', 'false') }},
        "ExperimentalPrimaryTeam": "{{ team.get('primary-team', '') }}"
    },
 {% display = mattermost.get('display-settings', {}) %}
    "DisplaySettings": {
+       "CustomURLSchemes": [],
        "ExperimentalTimezone": {{ display.get('experimental-timezone', 'false') }}
    },
    "ClientRequirements": {
@@ -184,6 +188,7 @@
        "EnableEmailBatching": {{ email.get('enable-email-batching', 'false') }},
        "EmailBatchingBufferSize": {{ email.get('batch-buffer-size', '256') }},
        "EmailBatchingInterval": {{ email.get('batch-interval', '30') }},
+       "EnablePreviewModeBanner": {{ email.get('enable-preview-banner', 'true') }},
        "SkipServerCertificateVerification": {{ email.get('skip-server-cert-validation', 'false') }},
        "EmailNotificationContentsType": "{{ email.get('content-type', 'full') }}",
        "LoginButtonColor": "{{ email.get('login-button-color', '') }},
@@ -280,6 +285,7 @@
        "NicknameAttribute": "{{ ldap.get('nickname-attribute', '') }}",
        "IdAttribute": "{{ ldap.get('id-attribute' '') }}",
        "PositionAttribute": "{{ ldap.get('position-attribute', '') }}",
+       "LoginIdAttribute": "{{ ldap.get('login-id-attribute', '') }}",
        "SyncIntervalMinutes": {{ ldap.get('sync-interval', '60') }},
        "SkipCertificateVerification": {{ ldap.get('skip-cert-verify', 'false') }},
        "QueryTimeout": {{ ldap.get('query-timeout', '60') }},
@@ -334,7 +340,10 @@
        "UseExperimentalGossip": {{ cluster.get('use-experimental-gossip', 'false') }},
        "ReadOnlyConfig": {{ cluster.get('read-only-config', 'true') }},
        "GossipPort": {{ cluster.get('gossip-port', '8074') }},
-       "StreamingPort": {{ cluster.get('streaming-port', '8075') }}
+       "StreamingPort": {{ cluster.get('streaming-port', '8075') }},
+       "MaxIdleConns": {{ cluster.get('max-idle-connections', '100') }},
+       "MaxIdleConnsPerHost": {{ cluster.get('max-idle-connections', '120') }},
+       "IdleConnTimeoutMilliseconds": {{ cluster.get('idle-connections-milliseconds', '90000') }}
    },
 {% metric = mattermost.get('metric-settings', {}) %}
    "MetricsSettings": {
