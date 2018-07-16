@@ -3,7 +3,7 @@ mattermost
 ==========
 Install, configure, and run `mattermost`.
 
-**NOTE:** This is currently a work in progress, this will work on RHEL/CentOS 7 and Ubuntu/Debian 16.04/9 machines, The pillar file suports all settings within Mattermost 5.0.1.
+**NOTE:** This is currently a work in progress, this will work on RHEL/CentOS 7 and Ubuntu/Debian 16.04/9 machines, The pillar file suports all settings within Mattermost 5.1.0.
 
 Available states
 ===================
@@ -22,7 +22,7 @@ Install, configure, and run ``mattermost`` service.
 ``mattermost.install``
 ----------------------
 
-Install ``mattermost`` from https://releases.mattermost.com/5.0.1/mattermost-team-5.0.1-linux-amd64.tar.gz
+Install ``mattermost`` from https://releases.mattermost.com/5.0.1/mattermost-team-5.1.0-linux-amd64.tar.gz
 
 ``mattermost.config``
 ---------------------
