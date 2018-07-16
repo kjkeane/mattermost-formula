@@ -46,6 +46,9 @@
        "WebserverMode": "{{ service.get('webserver-mode', 'gzip') }},
        "EnableCustomEmoji": {{ service.get('custom-emoji', 'false') }},
        "EnableEmojiPicker": {{ service.get('emoji-picker', 'true') }},
+       "EnableGifPicker": {{ service.get('gif-picker', 'true') }},
+       "GfycatApiKey": "{{ service.get('gfycat-api-key', '2_KtH_W5') }}",
+       "GfycatApiSecret": "{{ service.get('gfycat-api-secret', '3wLVZPiswc3DnaiaFoLkDvB4X0IV6CpMkj4tf2inJRsBY6-FnkT08zGmppWFgeof') }}",
        "RestrictCustomEmojiCreation": "{{ service.get('restrict-emoji-creation', 'all') }}",
        "RestrictPostDelete": "{{ service.get('restrict-post-delete', 'all') }}",
        "AllowEditPost": "{{ service.get('allow-post-edit', 'always') }}",
@@ -66,7 +69,9 @@
        "ImageProxyOptions": "{{ service.get('image-proxy-options', '') }}",
        "ImageProxyURL": "{{ service.get('image-proxy-url', '') }}",
        "EnableAPITeamDeletion": {{ service.get('api-team-deletion', 'false') }},
-       "ExperimentalEnableHardenedMode": {{ service.get('enable-hardened-mode', 'false') }}
+       "ExperimentalEnableHardenedMode": {{ service.get('enable-hardened-mode', 'false') }},
+       "ExperimentalLimitClientConfig": {{ service.get('enable-limit-client-config', 'false') }},
+       "ExperimentalEmailInvitations": {{ service.get('enable-email-invites', 'true') }}
    },
 {% team = mattermost.get('team-settings', {}) %}
    "TeamSettings": {
@@ -119,6 +124,7 @@
        "DataSourceReplicas": [{{ sql.get('datasource-replicas', '') }}],
        "DataSourceSearchReplicas": [{{ sql.get('datasource-search', '') }}],
        "MaxIdleConns": {{ sql.get('max-idle-connections', '20') }},
+       "ConnMaxLifetimeMilliseconds": {{ sql.get('max-lifetime', '3600000') }},
        "MaxOpenConns": {{ sql.get('max-open-connections', '300') }},
        "Trace": {{ sql.get('trace', 'false') }},
        "AtRestEncryptKey": "{{ sql.get('at-rest-encrypt-key', '') }}",
@@ -350,6 +356,12 @@
        "Enable": {{ metric.get('enable', 'false') }},
        "BlockProfileRate": {{ metric.get('block-profile-rate', '0') }},
        "ListenAddress": ":{{ metric.get('listen-address', '8067') }}"
+   },
+
+{% experimental = mattermost.get('experimental-settings', {}) %}
+   "ExperimentalSettings": {
+       "ClientSideCertEnable": {{ experimental.get('client-side-cert-enable', 'false') }},
+       "ClientSideCertCheck": "{{ experimental.get('client-side-cert-check', 'secondary') }}
    },
 {% analytics = mattermost.get('analytics-settings', {}) %}
    "AnalyticsSettings": {
