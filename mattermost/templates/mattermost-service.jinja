@@ -6,9 +6,9 @@ After=syslog.target network.target {{ mattermost.sql_service }}.service
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/mattermost
+WorkingDirectory={{ mattermost.install_dir }}/mattermost
 User=mattermost
-ExecStart=/opt/mattermost/bin/mattermost
+ExecStart={{ mattermost.install_dir }}/mattermost/bin/mattermost
 PIDFile=/var/spool/mattermost/pid/master.pid
 LimitNOFILE=49152
 
