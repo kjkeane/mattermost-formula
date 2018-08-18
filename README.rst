@@ -22,7 +22,7 @@ Install, configure, and run ``mattermost`` service.
 ``mattermost.install``
 ----------------------
 
-Install ``mattermost`` from https://releases.mattermost.com/5.0.1/mattermost-team-5.1.0-linux-amd64.tar.gz
+Install ``mattermost``
 
 ``mattermost.config``
 ---------------------
