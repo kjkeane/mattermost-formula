@@ -3,7 +3,7 @@ mattermost
 ==========
 Install, configure, and run `mattermost`.
 
-**NOTE:** This is currently a work in progress, this will work on RHEL/CentOS 7 and Ubuntu/Debian 16.04/9 machines, The pillar file suports all settings within Mattermost 5.2.1.
+**NOTE:** This is currently a work in progress, this will work on RHEL/CentOS 7 and Ubuntu/Debian 16.04/9 machines, The pillar file suports all settings within Mattermost 5.3.1.
 
 Available states
 ===================
