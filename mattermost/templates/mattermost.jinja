@@ -318,6 +318,7 @@
    "SamlSettings": {
        "Enable": {{ saml.get('enable', 'false') }},
        "EnableSyncWithLdap": {{ saml.get('enable-ldap-sync', 'false') }},
+       "EnableSyncWithLdapIncludeAuth": {{ saml.get('enable-ldap-sync-auth', 'false') }},
        "Verify": {{ saml.get('verify', 'true') }},
        "Encrypt": {{ saml.get('encrypt', 'true') }},
        "IdpUrl": "{{ saml.get('idp-url', '') }}",
@@ -326,6 +327,7 @@
        "IdpCertificateFile": "{{ saml.get('idp-cert-file', '') }}",
        "PublicCertificateFile": "{{ saml.get('public-cert-file', '') }}",
        "PrivateKeyFile": "{{ saml.get('private-key-file', '') }}",
+       "IdAttribute": "{{ saml.get('id-attribute', '') }}",
        "FirstNameAttribute": "{{ saml.get('first-name-attribute', '') }}",
        "LastNameAttribute": "{{ saml.get('last-name-attribute', '') }}",
        "EmailAttribute": "{{ saml.get('email-attribute', '') }}",

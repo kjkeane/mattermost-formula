@@ -1,3 +1,6 @@
+2018-10-06 - 5.3.1
+* Default to Mattermost 5.3.1
+* Add 'EnableSyncWithLdapIncludeAuth' and SAML attribute 'IdAttribute'
 2018-08-24 - 5.2.1
 * Default to Mattermost 5.2.1
 2018-08-17 - 5.2.0
