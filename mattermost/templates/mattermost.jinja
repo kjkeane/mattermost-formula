@@ -132,7 +132,8 @@
        "MaxOpenConns": {{ sql.get('max-open-connections', '300') }},
        "Trace": {{ sql.get('trace', 'false') }},
        "AtRestEncryptKey": "{{ sql.get('at-rest-encrypt-key', '') }}",
-       "QueryTimeout": {{ sql.get('query-timeout', '30') }}
+       "QueryTimeout": {{ sql.get('query-timeout', '30') }},
+       "EnablePublicChannelsMaterialization": {{ sql.get('enable-materialization', 'true') }}
    },
 {% log = mattermost.get('log-settings', {}) %}
    "LogSettings": {
