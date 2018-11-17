@@ -1,3 +1,5 @@
+2018-11-16 - 5.5.0
+* Default to Mattermost 5.5.0
 2018-11-10 - 5.4.0
 * Default to Mattermost 5.4.0
 * Add `EnablePublicChannelMaterialization`
