@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+
+Debian:
+  service_file: /lib/systemd/system/mattermost.service
+
+RedHat:
+  service_file: /etc/systemd/system/mattermost.service

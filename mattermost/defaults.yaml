@@ -1,0 +1,12 @@
+
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+
+mattermost:
+  global:
+    enabled: True
+  team-settings:
+    site-name: 'Mattermost'
+  sql-settings:
+    drivername: mysql
+    datasource: 'mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTime    out=30s&writeTimeout=30s'

@@ -1,3 +1,7 @@
+2018-12-09 - 5.5.1
+* Default to Mattermost 5.5.1
+* Update to new OS mapping
+* Minor bug fixes. (Ex: missing quotations, etc.)
 2018-11-16 - 5.5.0
 * Default to Mattermost 5.5.0
 2018-11-10 - 5.4.0

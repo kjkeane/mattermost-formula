@@ -1,9 +1,7 @@
 ==========
 mattermost
 ==========
-Install, configure, and run `mattermost`.
-
-**NOTE:** This is currently a work in progress, this will work on RHEL/CentOS 7 and Ubuntu/Debian 16.04/9 machines, The pillar file suports all settings within Mattermost 5.5.0.
+Install, configure, and run `mattermost`
 
 Available states
 ===================
