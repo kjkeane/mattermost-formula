@@ -1,24 +1,21 @@
-{% set mattermost = salt['grains.filter_by']({
-  'RedHat': {
-    'version': '5.5.0',
-    'install_dir': '/opt',
-    'config_file': '/opt/mattermost/config/config.json',
-    'config_file_source': 'salt://mattermost/templates/mattermost.jinja',
-    'service_file_path': '/etc/systemd/system/mattermost.service',
-    'sql_service': 'postgresql-9.4',
-    'user': 'mattermost',
-    'group': 'mattermost',
-    'service': 'mattermost',
-  },
-  'Debian': {
-    'version': '5.5.0',
-    'install_dir': '/opt',
-    'config_file': '/opt/mattermost/config/config.json',
-    'config_file_source': 'salt://mattermost/templates/mattermost.jinja',
-    'service_file_path': '/lib/systemd/system/mattermost.service',
-    'sql_service': 'postgres',
-    'user': 'mattermost',
-    'group': 'mattermost',
-    'service': 'mattermost',
-  },
-}, merge=salt['pillar.get']('mattermost:lookup')) %}
+{# vi: set ft=jinja: #}
+
+{% import_yaml "mattermost/defaults.yaml" as defaults %}
+{% import_yaml "mattermost/osfamilymap.yaml" as osfamilymap %}
+{% import_yaml "mattermost/oscodenamemap.yaml" as oscodenamemap %}
+{% import_yaml "mattermost/osfingermap.yaml" as osfingermap %}
+
+{# merge the osfamily map #}
+{% set osfamily = salt['grains.filter_by'](osfamilymap, grain='os_family') or{} %}
+{% do defaults.mattermost.update(osfamily) %}
+
+{# merge oscodenamesmap #}
+{% set oscode = salt['grains.filter_by'](oscodenamemap, grain='oscodename') or {} %}
+{% do defaults.mattermost.update(oscode) %}
+
+{# merge the osfingermap #}
+{% set osfinger = salt['grains.filter_by'](osfingermap, grain='osfinger') or {} %}
+{% do defaults.mattermost.update(osfinger) %}
+
+{# merge all #}
+{% set mattermost = salt['pillar.get']('mattermost', default=defaults['mattermost'], merge=True) %}

@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+
+default:
+  version: '5.5.1'
+  install_dir: '/opt'
+  config_file: '/opt/mattermost/config/config.json'
+  config_file_source: 'salt://mattermost/templates/mattermost.jinja'
+  service_file: '/etc/systemd/system/mattermost.service'
+  service_file_source: 'salt://mattermost/templates/mattermost-systemd.jinja'
+  sql_service: 'postgresql-9.6'
+  user: 'mattermost'
+  group: 'mattermost'
+  service: 'mattermost'
+
+Ubuntu-14.04:
+  service_file: '/etc/init/mattermost.conf'
+  service_file_source: 'salt://mattermost/templates/mattermost-init.jinja'
+
+Red Hat Enterprise Linux Server-6:
+  service_file: '/etc/init/mattermost.conf'
+  service_file_source: 'salt://mattermost/templates/mattermost-init.jinja'
+
+CentOS-6:
+  service_file: '/etc/init/mattermost.conf'
+  service_file_source: 'salt://mattermost/templates/mattermost-init.jinja'
+
+Oracle Linux Server-6:
+  service_file: 'etc/init/mattermost.conf'
+  service_file_source: 'salt://mattermost/templates/mattermost-init.jinja'
