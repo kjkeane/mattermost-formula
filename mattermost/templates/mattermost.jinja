@@ -354,7 +354,7 @@
        "ClusterName": "{{ cluster.get('name', '') }}",
        "OverrideHostname": "{{ cluster.get('override-hostname', '') }}",
        "UseIpAddress": {{ cluster.get('use-ipaddress', 'true') }},
-       "UseGossip": {{ cluster.get('use-experimental-gossip', 'false') }},
+       "UseExperimentalGossip": {{ cluster.get('use-experimental-gossip', 'false') }},
        "ReadOnlyConfig": {{ cluster.get('read-only-config', 'true') }},
        "GossipPort": {{ cluster.get('gossip-port', '8074') }},
        "StreamingPort": {{ cluster.get('streaming-port', '8075') }},
