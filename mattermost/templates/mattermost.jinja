@@ -9,6 +9,10 @@
        "ConnectionSecurity": "{{ service.get('connection-security', '') }}",
        "TLSCertFile": "{{ service.get('tls-cert-file', '') }}",
        "TLSKeyFile": "{{ service.get('tls-key-file', '') }}",
+       "TLSMinVer": "{{ service.get('tls-min-ver', '1.2') }}",
+       "TLSStrictTransport": {{ service.get('tls-strict-transport', 'false') }},
+       "TLSStrictTransportMaxAge": {{ service.get('tls-strict-transport-age', '63072000') }},
+       "TLSOverwriteCiphers": [],
        "UseLetsEncrypt": {{ service.get('letsencrypt', 'false') }},
        "LetsEncryptCertificateCacheFile": "{{ service.get('letsencrypt-cache-file', './config/letsencrypt.cache') }}",
        "Forward80To443": {{ service.get('forward-to-https', 'false') }},
@@ -350,7 +354,7 @@
        "ClusterName": "{{ cluster.get('name', '') }}",
        "OverrideHostname": "{{ cluster.get('override-hostname', '') }}",
        "UseIpAddress": {{ cluster.get('use-ipaddress', 'true') }},
-       "UseExperimentalGossip": {{ cluster.get('use-experimental-gossip', 'false') }},
+       "UseGossip": {{ cluster.get('use-experimental-gossip', 'false') }},
        "ReadOnlyConfig": {{ cluster.get('read-only-config', 'true') }},
        "GossipPort": {{ cluster.get('gossip-port', '8074') }},
        "StreamingPort": {{ cluster.get('streaming-port', '8075') }},
@@ -368,7 +372,8 @@
 {% set experimental = mattermost.get('experimental-settings', {}) %}
    "ExperimentalSettings": {
        "ClientSideCertEnable": {{ experimental.get('client-side-cert-enable', 'false') }},
-       "ClientSideCertCheck": "{{ experimental.get('client-side-cert-check', 'secondary') }}"
+       "ClientSideCertCheck": "{{ experimental.get('client-side-cert-check', 'secondary') }}",
+       "EnablePostMetadata": {{ experimental.get('enable-post-metadata', 'false') }}
    },
 {% set analytics = mattermost.get('analytics-settings', {}) %}
    "AnalyticsSettings": {
