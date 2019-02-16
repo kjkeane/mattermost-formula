@@ -72,13 +72,11 @@
        "EnableTutorial": {{ service.get('enable-tutorial', 'true') }},
        "ExperimentalEnableDefaultChannelLeaveJoinMessages": {{ service.get('default-channel-leave-join-messages', 'true') }},
        "ExperimentalGroupUnreadChannels": "{{ service.get('group-unread-channels', 'disabled') }}",
-       "ImageProxyType": "{{ service.get('image-proxy-type', '') }}",
-       "ImageProxyOptions": "{{ service.get('image-proxy-options', '') }}",
-       "ImageProxyURL": "{{ service.get('image-proxy-url', '') }}",
        "EnableAPITeamDeletion": {{ service.get('api-team-deletion', 'false') }},
        "ExperimentalEnableHardenedMode": {{ service.get('enable-hardened-mode', 'false') }},
        "ExperimentalLimitClientConfig": {{ service.get('enable-limit-client-config', 'false') }},
-       "ExperimentalEmailInvitations": {{ service.get('enable-email-invites', 'true') }}
+       "ExperimentalEmailInvitations": {{ service.get('enable-email-invites', 'false') }},
+       "ExperimentalLdapGroupSync": {{ service.get('ldap-group-sync', 'false') }}
    },
 {% set team = mattermost.get('team-settings', {}) %}
    "TeamSettings": {
@@ -293,6 +291,9 @@
        "BindUsername": "{{ ldap.get('bind-username', '') }}",
        "BindPassword": "{{ ldap.get('bind-password', '') }}",
        "UserFilter": "{{ ldap.get('user-filter', '') }}",
+       "GroupFilter": "{{ ldap.get('group-filter', '')",
+       "GroupDisplayNameAttribute": "{{ ldap.get('group-dn-attribute', '') }}",
+       "GroupIdAttribute": "{{ ldap.get('group-id-attribute', '') }}",
        "FirstNameAttribute": "{{ ldap.get('first-name-attribute', '') }}",
        "LastNameAttribute": "{{ ldap.get('last-name-attribute', '') }}",
        "EmailAttribute": "{{ ldap.get('email-attribute', '') }}",
@@ -373,7 +374,8 @@
    "ExperimentalSettings": {
        "ClientSideCertEnable": {{ experimental.get('client-side-cert-enable', 'false') }},
        "ClientSideCertCheck": "{{ experimental.get('client-side-cert-check', 'secondary') }}",
-       "EnablePostMetadata": {{ experimental.get('enable-post-metadata', 'false') }}
+       "DisablePostMetadata": {{ experimental.get('disable-post-metadata', 'false') }},
+       "LinkMetadataTimeoutMilliseconds": {{ experimental.get('metadat-timeout', '5000') }}
    },
 {% set analytics = mattermost.get('analytics-settings', {}) %}
    "AnalyticsSettings": {
@@ -441,5 +443,12 @@
        "Directory": "{{ plugin.get('directory', './plugins') }}",
        "Plugins": {},
        "PluginStates": {}
+   },
+{% set image = mattermost.get('image-proxy-settings', {}) %}
+   "ImageProxySettings: {
+       "Enable": {{ image.get('enable', 'true') }},
+       "ImageProxyType": "{{ image.get('image-proxy-type', 'local') }}",
+       "RemoteImageProxyURL": "{{ image.get('remote-proxy-url', '') }}",
+       "RemoteImageProxyOptions": "{{ image.get('remote-proxy-options', '') }}"
    }
 }
