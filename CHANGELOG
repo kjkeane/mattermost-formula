@@ -1,3 +1,6 @@
+2019-03-18 - 5.9.0
+* Default to Mattermost 5.9.0
+* Switch Pillar to match Mattermost configuration values
 2019-02-16 - 5.8.0
 * Default to Mattermost 5.8.0
 * Add ExperimentalLdapGroupSync
