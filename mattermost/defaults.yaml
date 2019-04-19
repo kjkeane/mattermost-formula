@@ -4,7 +4,7 @@
 
 mattermost:
   TeamSettings:
-    site-name: 'Mattermost'
+    SiteName: 'Mattermost'
   SqlSettings:
-    drivername: mysql
-    datasource: 'mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTime    out=30s&writeTimeout=30s'
+    DriverName: mysql
+    DataSource: 'mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTime    out=30s&writeTimeout=30s'

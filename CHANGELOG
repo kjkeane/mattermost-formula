@@ -1,3 +1,8 @@
+2019-04-19 - 5.10.0
+* Default to Mattermost 5.10.0
+* Add Experimental setting 'RestrictSystemAdmin'
+* Add Service setting 'MinimumHashtagLength'
+* Fix default values
 2019-03-18 - 5.9.0
 * Default to Mattermost 5.9.0
 * Switch Pillar to match Mattermost configuration values
