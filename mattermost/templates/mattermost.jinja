@@ -77,7 +77,8 @@
        "ExperimentalLimitClientConfig": {{ service.get('ExperimentalLimitClientConfig', 'false') }},
        "DisableLegacyMFA": {{ service.get('DisableLegacyMFA', 'false') }},
        "ExperimentalEmailInvitations": {{ service.get('ExperimentalEmailInvitation', 'false') }},
-       "ExperimentalLdapGroupSync": {{ service.get('ExperimentalLdapGroupSync', 'false') }}
+       "ExperimentalLdapGroupSync": {{ service.get('ExperimentalLdapGroupSync', 'false') }},
+       "MinimumHashtagLength": {{ service.get('MinimumHashtagLength', '3') }}
    },
 {% set team = mattermost.get('team-settings', {}) %}
    "TeamSettings": {
@@ -376,7 +377,8 @@
        "ClientSideCertEnable": {{ experimental.get('ClientSideCertEnable', 'false') }},
        "ClientSideCertCheck": "{{ experimental.get('ClientSideCertCheck', 'secondary') }}",
        "DisablePostMetadata": {{ experimental.get('DisablePostMetadata', 'false') }},
-       "LinkMetadataTimeoutMilliseconds": {{ experimental.get('LinkMetadataTimeoutMilliseconds', '5000') }}
+       "LinkMetadataTimeoutMilliseconds": {{ experimental.get('LinkMetadataTimeoutMilliseconds', '5000') }},
+       "RestrictSystemAdmin": {{ experimental.get('RestrictSystemAdmin', 'false') }}
    },
 {% set analytics = mattermost.get('AnalyticsSettings', {}) %}
    "AnalyticsSettings": {
