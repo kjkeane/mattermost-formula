@@ -293,7 +293,7 @@
        "BindUsername": "{{ ldap.get('BindUsername', '') }}",
        "BindPassword": "{{ ldap.get('BindPassword', '') }}",
        "UserFilter": "{{ ldap.get('UserFilter', '') }}",
-       "GroupFilter": "{{ ldap.get('GroupFilter', '')",
+       "GroupFilter": "{{ ldap.get('GroupFilter', '') }}",
        "GroupDisplayNameAttribute": "{{ ldap.get('GroupDisplayNameAttribute', '') }}",
        "GroupIdAttribute": "{{ ldap.get('GroupIDAttribute', '') }}",
        "FirstNameAttribute": "{{ ldap.get('FirstNameAttribute', '') }}",
@@ -437,7 +437,7 @@
        "PluginStates": {}
    },
 {% set image = mattermost.get('ImageProxySettings', {}) %}
-   "ImageProxySettings: {
+   "ImageProxySettings": {
        "Enable": {{ image.get('Enable', 'true') }},
        "ImageProxyType": "{{ image.get('ImageProxyType', 'local') }}",
        "RemoteImageProxyURL": "{{ image.get('RemoteImageProxyURL', '') }}",
