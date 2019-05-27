@@ -1,3 +1,5 @@
+2019-05-26
+* Update `mattermost.jinja` template to match 5.11.0
 2019-05-17 - 5.11.0
 * Default to Mattermost 5.11.0
 2019-05-17 - 5.10.1
