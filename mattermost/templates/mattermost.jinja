@@ -62,6 +62,7 @@
        "PostEditTimeLimit": {{ service.get('PostEditTimeLimit', '300') }},
        "ExperimentalEnableAuthenticationTransfer": {{ service.get('ExperimentalEnableAuthenticationTransfer', 'true') }},
        "TimeBetweenUserTypingUpdatesMilliseconds": {{ service.get('TimeBetweenUserTypingUpdatesMilliseconds', '5000') }},
+       "MinimumHashtagLength": {{ service.get('MinimumHashtagLength', '3') }},
        "EnablePostSearch": {{ service.get('EnablePostSearch', 'true') }},
        "EnableUserTypingMessages": {{ service.get('EnableUserTypingMessage', 'true') }},
        "EnableChannelViewedMessages": {{ service.get('EnableChannelViewedMessages', 'true') }},
@@ -87,6 +88,7 @@
        "EnableTeamCreation": {{ team.get('EnableTeamCreation', 'true') }},
        "EnableUserCreation": {{ team.get('EnableUserCreation', 'true') }},
        "EnableOpenServer": {{ team.get('EnableOpenServer', 'false') }},
+       "EnableUserDeactivation": {{ team.get('EnableUserDeactivation', 'false') }},
        "RestrictCreationToDomains": "{{ team.get('RestrictCreationToDomains', '') }}",
        "EnableCustomBrand": {{ team.get('EnableCustomBrand', 'false') }},
        "CustomBrandText": "{{ team.get('CustomBrandText', '') }}",
@@ -110,7 +112,8 @@
        "ExperimentalEnableAutomaticReplies": {{ team.get('ExperimentalEnableAutomaticReplies', 'false') }},
        "ExperimentlaHideTownSquareinLHS": {{ team.get('ExperimentalHideTownSquareinLHS', 'false') }},
        "ExperimentalTownSquareIsReadOnly": {{ team.get('ExperimentalTownSquareIsReadOnly', 'false') }},
-       "ExperimentalPrimaryTeam": "{{ team.get('ExperimentalPrimaryTeam', '') }}"
+       "ExperimentalPrimaryTeam": "{{ team.get('ExperimentalPrimaryTeam', '') }}",
+       "ExperimentalDefaultChannels": "{{ team.get('ExperimentalDefaultChannels', '') }}"
    },
 {% set display = mattermost.get('DisplaySettings', {}) %}
    "DisplaySettings": {
@@ -137,7 +140,6 @@
        "Trace": {{ sql.get('Trace', 'false') }},
        "AtRestEncryptKey": "{{ sql.get('AtRestEncryptKey', '') }}",
        "QueryTimeout": {{ sql.get('QueryTimeout', '30') }},
-       "EnablePublicChannelsMaterialization": {{ sql.get('EnablePublicChannelIsMaterialization', 'true') }}
    },
 {% set log = mattermost.get('LogSettings', {}) %}
    "LogSettings": {
@@ -249,9 +251,6 @@
        "AllowCustomThemes": {{ theme.get('AllowCustomThemes', 'true') }},
        "AllowedThemes": [{{ theme.get('AllowedThemes', '') }}]
    },
-   "TimezoneSettings": {
-       "SupportedTimezonesPath": "timezones.json"
-   },
 {% set git = mattermost.get('GitLabSettings', {}) %}
    "GitLabSettings": {
        "Enable": {{ git.get('Enable', 'false') }},
@@ -308,7 +307,10 @@
        "SkipCertificateVerification": {{ ldap.get('SkipCertificationVerification', 'false') }},
        "QueryTimeout": {{ ldap.get('QueryTimeout', '60') }},
        "MaxPageSize": {{ ldap.get('MaxPageSize', '0') }},
-       "LoginFieldName": "{{ ldap.get('LoginFieldName', '') }}"
+       "LoginFieldName": "{{ ldap.get('LoginFieldName', '') }}",
+       "LoginButtonColor": "{{ ldap.get('LoginButtonColor', '') }}",
+       "LoginButtonBorderColor": "{{ ldap.get('LoginButtonBorderColor', '') }}",
+       "LoginButtonTextColor": "{{ ldap.get('LoginButtonTextColor', '') }}"
    },
 {% set compliance = mattermost.get('ComplianceSettings', {}) %}
    "ComplianceSettings": {
@@ -332,6 +334,8 @@
        "IdpUrl": "{{ saml.get('IdpUrl', '') }}",
        "IdpDescriptorUrl": "{{ saml.get('IdpDescriptorUrl', '') }}",
        "AssertionConsumerServiceURL": "{{ saml.get('AssertionConsumerServiceURL', '') }}",
+       "ScopingIDPProviderId": "{{ saml.get('ScopingIDPProviderId', '') }}",
+       "ScopingIDPName": "{{ saml.get('ScopingIDPName', '') }}",
        "IdpCertificateFile": "{{ saml.get('IdpCertificateFile', '') }}",
        "PublicCertificateFile": "{{ saml.get('public-cert-file', '') }}",
        "PrivateKeyFile": "{{ saml.get('PrivateKeyFile', '') }}",
@@ -343,7 +347,10 @@
        "NicknameAttribute": "{{ saml.get('NicknameAttribute', '') }}",
        "LocaleAttribute": "{{ saml.get('LocaleAttribute', '') }}",
        "PositionAttribute": "{{ saml.get('PositionAttribute', '') }}",
-       "LoginButtonText": "{{ saml.get('LoginButtonText', 'With SAML') }}"
+       "LoginButtonText": "{{ saml.get('LoginButtonText', 'SAML') }}"
+       "LoginButtonColor": "{{ saml.get('LoginButtonColor', '') }}",
+       "LoginButtonBorderColor": "{{ saml.get('LoginButtonBorderColor', '') }}",
+       "LoginButtonTextColor": "{{ saml.get('LoginButtonTextColor', '') }}"
    },
 {% set native_app = mattermost.get('NativeAppSettings', {}) %}
    "NativeAppSettings": {
@@ -391,9 +398,14 @@
        "Password": "{{ elasticsearch.get('Password', 'changeme') }}",
        "EnableIndexing": {{ elasticsearch.get('EnableIndexing', 'false') }},
        "EnableSearching": {{ elasticsearch.get('EnableSearching', 'false') }},
+       "EnableAutomcomplete": {{ elasticsearch.get('EnableAutocomplete', 'false') }},
        "Sniff": {{ elasticsearch.get('Sniff', 'true') }},
        "PostIndexReplicas": {{ elasticsearch.get('PostIndexReplicas', '1') }},
        "PostIndexShards": {{ elasticsearch.get('PostIndexShards', '1') }},
+       "ChannelIndexReplicas": {{ elasticsearch.get('ChannelIndexReplicas', '1') }},
+       "ChannelIndexShards": {{ elasticsearch.get('ChannelIndexShards', '1') }},
+       "UserIndexReplicas": {{ elasticsearch.get('UserIndexReplicas', '1') }},
+       "UserIndexShards": {{ elasticsearch.get('UserIndexShards', '1') }},
        "AggregatePostsAfterDays": {{ elasticsearch.get('AggregatePostsAfterDays', '365') }},
        "PostsAggregatorJobStartTime": "{{ elasticsearch.get('PostsAggregatorJobStartTime', '03:00' ) }}",
        "IndexPrefix": "{{ elasticsearch.get('IndexPrefix', '') }}",
@@ -433,6 +445,7 @@
        "Enable": {{ plugin.get('Enable', 'true') }},
        "EnableUploads": {{ plugin.get('EnableUploads', 'false') }},
        "Directory": "{{ plugin.get('Directory', './plugins') }}",
+       "ClientDirectory": "{{ plugin.get('ClientDirectory', './client/plugins') }}",
        "Plugins": {},
        "PluginStates": {}
    },
