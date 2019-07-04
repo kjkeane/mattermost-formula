@@ -2,7 +2,7 @@
 # vim: ft=yaml
 
 default:
-  version: '5.11.0'
+  version: '5.12.0'
   install_dir: '/opt'
   config_file: '/opt/mattermost/config/config.json'
   config_file_source: 'salt://mattermost/templates/mattermost.jinja'
