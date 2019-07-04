@@ -64,6 +64,7 @@
        "TimeBetweenUserTypingUpdatesMilliseconds": {{ service.get('TimeBetweenUserTypingUpdatesMilliseconds', '5000') }},
        "MinimumHashtagLength": {{ service.get('MinimumHashtagLength', '3') }},
        "EnablePostSearch": {{ service.get('EnablePostSearch', 'true') }},
+       "MinimumHashtagLength": {{ service.get('MinimumHashtagLength', '3') }},
        "EnableUserTypingMessages": {{ service.get('EnableUserTypingMessage', 'true') }},
        "EnableChannelViewedMessages": {{ service.get('EnableChannelViewedMessages', 'true') }},
        "EnableUserStatuses": {{ service.get('EnableUserStatuses', 'true') }},
@@ -73,13 +74,15 @@
        "EnableTutorial": {{ service.get('EnableTutorial', 'true') }},
        "ExperimentalEnableDefaultChannelLeaveJoinMessages": {{ service.get('ExperimentalEnableDefaultChannelLeaveJoinMessages', 'true') }},
        "ExperimentalGroupUnreadChannels": "{{ service.get('ExperimentalGroupUnreadChannels', 'disabled') }}",
+       "ExperimentalChannelOrganization": {{ service.get('ExperimentalChannelOrganizations', 'false') }},
        "EnableAPITeamDeletion": {{ service.get('EnableAPITeamDeletion', 'false') }},
        "ExperimentalEnableHardenedMode": {{ service.get('ExperimentalEnableHardenedMode', 'false') }},
-       "ExperimentalLimitClientConfig": {{ service.get('ExperimentalLimitClientConfig', 'false') }},
-       "DisableLegacyMFA": {{ service.get('DisableLegacyMFA', 'false') }},
+       "DisableLegacyMFA": {{ service.get('DisableLegacyMFA', 'true') }},
        "ExperimentalEmailInvitations": {{ service.get('ExperimentalEmailInvitation', 'false') }},
        "ExperimentalLdapGroupSync": {{ service.get('ExperimentalLdapGroupSync', 'false') }},
-       "MinimumHashtagLength": {{ service.get('MinimumHashtagLength', '3') }}
+       "ExperimentalStrictCSRFEnforcement": {{ service.get('ExperimentalStrictCSRFEnforcement', 'false') }},
+       "EnableBotAccountCreation": {{ service.get('EnableBotAccountCreation', 'false') }},
+       "DisableBotsWhenOwnerIsDeactivated": {{ service.get('DisableBotsWhenOwnerIsDeactivated', 'true') }}
    },
 {% set team = mattermost.get('team-settings', {}) %}
    "TeamSettings": {
@@ -151,6 +154,16 @@
        "FileLocation": "{{ log.get('FileLocation', '') }}",
        "EnableWebhookDebugging": {{ log.get('EnableWebhookDebugging', 'true') }},
        "EnableDiagnostics": {{ log.get('EnableDiagnostics', 'true') }}
+   },
+{% set notification = mattermost.get('NotificationLogSettings', {}) %}
+   "NotificationLogSettings": {
+       "EnableConsole": {{ notification.get('EnableConsole', 'true') }}},
+       "ConsoleLevel": "{{ notification.get('ConsoleLevel', 'INFO') }}",
+       "ConsoleJson": {{ notification.get('ConsoleJson', 'true') }},
+       "EnableFile": {{ notification.get('EnableFile', 'true') }},
+       "FileLevel": "{{ notification.get('FileLevel', 'INFO') }}",
+       "FileJson": {{ notification.get('FileJson', 'true') }},
+       "FileLocation": "{{ notification.get('FileLocation', '') }}"
    },
 {% set password = mattermost.get('PasswordSettings', {}) %}
    "PasswordSettings": {
@@ -444,6 +457,7 @@
    "PluginSettings": {
        "Enable": {{ plugin.get('Enable', 'true') }},
        "EnableUploads": {{ plugin.get('EnableUploads', 'false') }},
+       "EnableHealthCheck": {{ plugin.get('EnableHealthCheck', 'false') }},
        "Directory": "{{ plugin.get('Directory', './plugins') }}",
        "ClientDirectory": "{{ plugin.get('ClientDirectory', './client/plugins') }}",
        "Plugins": {},
