@@ -1,3 +1,13 @@
+2019-08-24 - 5.14.2
+* Defaults to Mattermost 5.14.2
+* Update Mattermost Template
+  * ClusterSettings
+    * NetworkInterface
+    * BindAddress
+    * AdvertiseAddress
+  * PluginSettings
+    * AllowInsecureDownloadUrl
+* Cleanup bad pillar.example information
 2019-08-02 - 5.13.2
 * Default to Mattermost 5.13.2
 2019-07-03 - 5.12.2

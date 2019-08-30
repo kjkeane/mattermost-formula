@@ -376,6 +376,9 @@
        "Enable": {{ cluster.get('Enable', 'false') }},
        "ClusterName": "{{ cluster.get('Name', '') }}",
        "OverrideHostname": "{{ cluster.get('OverrideHostname', '') }}",
+       "NetworkInterface": "{{ cluster.get('NetworkInterface', '') }}",
+       "BindAddress": "{{ cluster.get('BindAddress', '') }}",
+       "AvertiseAddress": "{{ cluster.get('AdvertiseAddress', '') }}",
        "UseIpAddress": {{ cluster.get('UseIpAddress', 'true') }},
        "UseExperimentalGossip": {{ cluster.get('UseExperimentalGossip', 'false') }},
        "ReadOnlyConfig": {{ cluster.get('ReadOnlyConfig', 'true') }},
@@ -457,6 +460,7 @@
    "PluginSettings": {
        "Enable": {{ plugin.get('Enable', 'true') }},
        "EnableUploads": {{ plugin.get('EnableUploads', 'false') }},
+       "AllowInsecureDownloadUrl": {{ plugin.get('AllowInsecureDownloadUrl', 'false') }},
        "EnableHealthCheck": {{ plugin.get('EnableHealthCheck', 'false') }},
        "Directory": "{{ plugin.get('Directory', './plugins') }}",
        "ClientDirectory": "{{ plugin.get('ClientDirectory', './client/plugins') }}",
