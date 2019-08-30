@@ -1,5 +1,6 @@
 2019-08-24 - 5.14.2
 * Defaults to Mattermost 5.14.2
+* Remove bad pillar.example information
 * Update Mattermost Template
   * ClusterSettings
     * NetworkInterface
