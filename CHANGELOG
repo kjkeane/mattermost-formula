@@ -1,3 +1,18 @@
+2019-10-26 - 5.16.1
+* Defaults to Mattermost 5.16.0
+* Update Mattermost Template
+  * PluginSettings
+    * EnableMarketplace
+    * MarketplaceUrl
+  * GuestAccountSettings
+    * Enable
+    * AllowEmailAccounts
+    * EnforceMultifactorAuthentication
+    * RestrictCreationToDomains
+  * SqlSettings.DataSource, ElasticsearchSettings.ConnectionUrl, EmailSettings.SMTPServer
+    * Default to localhost instead of dockerhost
+  * NativeAppSettings.AppDownloadLink
+    * Default to https://mattermost.com/download/#mattermostApps
 2019-10-08 - 5.15.0
 * Defaults to Mattermost 5.15.0
 2019-08-24 - 5.14.2
