@@ -1,15 +1,18 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 mattermost:
   ServiceSettings:
-    SiteURL: # mattermost siteurl
-    WebSocketURL:
-    LicenseFileLocation:
-    ListenAddress: '8065' # mattermost listen address
-    ConnectionSecurity:
+    SiteURL: ''
+    WebSocketURL: ''
+    LicenseFileLocation: ''
+    ListenAddress: '8065'
+    ConnectionSecurity: ''
     TLSCertFile: '/path/to/cert'
     TLSKeyFile: '/path/to/key'
-    UseLetsEncrypt: False # enable/disable letsencrypt
+    UseLetsEncrypt: False
     LetsEncryptCacheFile: '/.config/letsencrypt.cache'
-    Forward80To443: False # forward 80 to 443
+    Forward80To443: False
     ReadTimeout: 300
     WriteTimeout: 300
     MaximumLoginAttempts: 10
@@ -31,10 +34,10 @@ mattermost:
     EnableMultifactorAuthentication: False
     EnforceMultifactorAuthentication: False
     EnableUserAccessTokens: False
-    AllowCorsFrom:
-    CorsExposedHeaders
-    CorsAllowCredentials
-    CorsDebug
+    AllowCorsFrom: ''
+    CorsExposedHeaders: ''
+    CorsAllowCredentials: ''
+    CorsDebug: ''
     AllowCookiesForSubdomains: False
     SessionLengthWebInDays: 30
     SessionLengthMobileInDays: 30
@@ -43,7 +46,7 @@ mattermost:
     SessionIdleTimeoutInMinutes: 10
     WebsocketSecurePort: 443
     WebsocketPort: 80
-    WebserverMode: gzip
+    WebserverMode: 'gzip'
     EnableCustomEmoji: False
     EnableEmojiPicker: True
     EnableGifPicker: False
@@ -109,11 +112,11 @@ mattermost:
   SqlSettings:
     DriverName: mysql
     DataSource: 'mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTime    out=30s&writeTimeout=30s'
-    DataSourceReplicas:
-    DataSourceSearchReplicas:
+    DataSourceReplicas: ''
+    DataSourceSearchReplicas: ''
     MaxIdleConns: 20
     Trace: False
-    AtRestEncryptKey:
+    AtRestEncryptKey: ''
     QueryTimeout: 30
 
   LogSettings:
