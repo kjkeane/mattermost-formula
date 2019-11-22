@@ -48,7 +48,7 @@ jobs:
         - yamllint -s .
         # Install and run `commitlint`
         - npm i -D @commitlint/config-conventional
-                   @commitlint/travis-cli
+        - npm i -D @commitlint/travis-cli
         - commitlint-travis
     # Run the `rubocop` linter in a separate job that is allowed to fail
     # Once these lint errors are fixed, this can be merged into a single job
