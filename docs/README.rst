@@ -105,28 +105,6 @@ dependency on ``mattermost.service.clean`` via include list.
 This state will remove the mattermost package and has a depency on
 ``mattermost.config.clean`` via include list.
 
-``mattermost.subcomponent``
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-*Meta-state (This is a state that includes other states)*.
-
-This state installs a subcomponent configuration file before
-configuring and starting the mattermost service.
-
-``mattermost.subcomponent.config``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will configure the mattermost subcomponent and has a
-dependency on ``mattermost.config`` via include list.
-
-``mattermost.subcomponent.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will remove the configuration of the mattermost subcomponent
-and reload the mattermost service by a dependency on
-``mattermost.service.running`` via include list and ``watch_in``
-requisite.
-
 Testing
 -------
 
