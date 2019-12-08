@@ -82,7 +82,8 @@
        "ExperimentalLdapGroupSync": {{ service.get('ExperimentalLdapGroupSync', 'false') }},
        "ExperimentalStrictCSRFEnforcement": {{ service.get('ExperimentalStrictCSRFEnforcement', 'false') }},
        "EnableBotAccountCreation": {{ service.get('EnableBotAccountCreation', 'false') }},
-       "DisableBotsWhenOwnerIsDeactivated": {{ service.get('DisableBotsWhenOwnerIsDeactivated', 'true') }}
+       "DisableBotsWhenOwnerIsDeactivated": {{ service.get('DisableBotsWhenOwnerIsDeactivated', 'true') }},
+       "EnableLatex": {{ service.get('EnableLatex', 'false') }}
    },
 {% set team = mattermost.get('team-settings', {}) %}
    "TeamSettings": {

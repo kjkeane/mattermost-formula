@@ -1,3 +1,7 @@
+2019-12-07 - 5.17.1
+* Update Mattermost Template
+  * ServiceSettings
+    - EnableLatex
 2019-10-26 - 5.16.1
 * Defaults to Mattermost 5.16.0
 * Update Mattermost Template
