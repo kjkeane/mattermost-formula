@@ -1,3 +1,18 @@
+2019-01-03 - 5.18.0
+* Update Mattermost Template
+  * TeamSettings
+    - LockTeammateNameDisplay
+  * LdapSettings
+    - GuestFilter
+  * SamlSettings
+    - SignatureAlgorithm
+    - CanonicalAlgorithm
+    - GuestAttribute
+  * PluginSettings
+    - RequirePluginSignature
+    - SignaturePublicKeyFiles
+  * ServiceSettings
+    - Removed ExperimentalLdapGroupSync
 2019-12-07 - 5.17.1
 * Update Mattermost Template
   * ServiceSettings
