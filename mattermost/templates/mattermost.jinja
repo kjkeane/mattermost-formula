@@ -79,7 +79,6 @@
        "ExperimentalEnableHardenedMode": {{ service.get('ExperimentalEnableHardenedMode', 'false') }},
        "DisableLegacyMFA": {{ service.get('DisableLegacyMFA', 'true') }},
        "ExperimentalEmailInvitations": {{ service.get('ExperimentalEmailInvitation', 'false') }},
-       "ExperimentalLdapGroupSync": {{ service.get('ExperimentalLdapGroupSync', 'false') }},
        "ExperimentalStrictCSRFEnforcement": {{ service.get('ExperimentalStrictCSRFEnforcement', 'false') }},
        "EnableBotAccountCreation": {{ service.get('EnableBotAccountCreation', 'false') }},
        "DisableBotsWhenOwnerIsDeactivated": {{ service.get('DisableBotsWhenOwnerIsDeactivated', 'true') }},
@@ -115,6 +114,7 @@
        "ViewArchivedChannels": {{ team.get('ViewArchiveChannels', 'true') }},
        "ExperimentalEnableAutomaticReplies": {{ team.get('ExperimentalEnableAutomaticReplies', 'false') }},
        "ExperimentlaHideTownSquareinLHS": {{ team.get('ExperimentalHideTownSquareinLHS', 'false') }},
+       "LockTeammateNameDisplay": {{ team.get('LockTeammateNameDisplay', 'false') }},
        "ExperimentalTownSquareIsReadOnly": {{ team.get('ExperimentalTownSquareIsReadOnly', 'false') }},
        "ExperimentalPrimaryTeam": "{{ team.get('ExperimentalPrimaryTeam', '') }}",
        "ExperimentalDefaultChannels": "{{ team.get('ExperimentalDefaultChannels', '') }}"
@@ -303,6 +303,7 @@
        "BindPassword": "{{ ldap.get('BindPassword', '') }}",
        "UserFilter": "{{ ldap.get('UserFilter', '') }}",
        "GroupFilter": "{{ ldap.get('GroupFilter', '') }}",
+       "GuestFilter": "{{ ldap.get('GuestFilter', '') }},
        "GroupDisplayNameAttribute": "{{ ldap.get('GroupDisplayNameAttribute', '') }}",
        "GroupIdAttribute": "{{ ldap.get('GroupIDAttribute', '') }}",
        "FirstNameAttribute": "{{ ldap.get('FirstNameAttribute', '') }}",
@@ -320,7 +321,8 @@
        "LoginFieldName": "{{ ldap.get('LoginFieldName', '') }}",
        "LoginButtonColor": "{{ ldap.get('LoginButtonColor', '') }}",
        "LoginButtonBorderColor": "{{ ldap.get('LoginButtonBorderColor', '') }}",
-       "LoginButtonTextColor": "{{ ldap.get('LoginButtonTextColor', '') }}"
+       "LoginButtonTextColor": "{{ ldap.get('LoginButtonTextColor', '') }}",
+       "Trace": {{ ldap.get('Trace', 'false') }}
    },
 {% set compliance = mattermost.get('ComplianceSettings', {}) %}
    "ComplianceSettings": {
@@ -344,12 +346,15 @@
        "IdpUrl": "{{ saml.get('IdpUrl', '') }}",
        "IdpDescriptorUrl": "{{ saml.get('IdpDescriptorUrl', '') }}",
        "AssertionConsumerServiceURL": "{{ saml.get('AssertionConsumerServiceURL', '') }}",
+       "SignatureAlgorithm": "RSAwithSHA1",
+       "CanonicalAlgorithm": "Canonical1.0",
        "ScopingIDPProviderId": "{{ saml.get('ScopingIDPProviderId', '') }}",
        "ScopingIDPName": "{{ saml.get('ScopingIDPName', '') }}",
        "IdpCertificateFile": "{{ saml.get('IdpCertificateFile', '') }}",
        "PublicCertificateFile": "{{ saml.get('public-cert-file', '') }}",
        "PrivateKeyFile": "{{ saml.get('PrivateKeyFile', '') }}",
        "IdAttribute": "{{ saml.get('IdAttribute', '') }}",
+       "GuestAttribute": "{{ saml.get('GuestAttribute', '') }}",
        "FirstNameAttribute": "{{ saml.get('FirstNameAttribute', '') }}",
        "LastNameAttribute": "{{ saml.get('LastNameAttribute', '') }}",
        "EmailAttribute": "{{ saml.get('EmailAttribute', '') }}",
@@ -468,7 +473,9 @@
          }
        },
        "EnableMarketplace": "{{ plugin.get('EnableMarketplace', 'true') }}",
-       "MarketplaceUrl": "https://api.integrations.mattermost.com"
+       "RequirePluginSignature": "{{ plugin.get('RequirePluginSignature', 'false') }}",
+       "MarketplaceUrl": "https://api.integrations.mattermost.com",
+       "SignaturePublicKeyFiles": []
    },
 
 {% set display = mattermost.get('DisplaySettings', {}) %}
