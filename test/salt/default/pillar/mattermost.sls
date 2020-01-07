@@ -455,4 +455,3 @@ mattermost:
     ImageProxyType: local
     RemoteImageProxyURL: ''
     RemoteImageProxyOptions: ''
- 
