@@ -10,19 +10,19 @@
 # you will need to provide at least an empty dict in this file, e.g.
 # osfingermap: {}
 ---
-#os: RedHat
+# os: RedHat
 Red Hat Enterprise Linux Server-6:
   service:
     file: '/etc/init/mattermost.conf'
     source: 'salt://mattermost/files/default/init.jinja'
 
-#os: CentOS
+# os: CentOS
 CentOS-6:
   service:
     file: '/etc/init/mattermost.conf'
     source: 'salt://mattermost/files/default/init.jinja'
 
-#os: OEL
+# os: OEL
 Oracle Linux Server-6:
   service:
     file: 'etc/init/mattermost.conf'

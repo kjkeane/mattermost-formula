@@ -5,7 +5,7 @@ mattermost:
   pkg:
     name: mattermost
     version: '5.18.0'
-  
+
   user: mattermost
   group: mattermost
 
