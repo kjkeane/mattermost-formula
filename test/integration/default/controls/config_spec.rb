@@ -9,6 +9,6 @@ control 'Mattermost configuration' do
     it { should be_owned_by 'mattermost' }
     it { should be_grouped_into 'mattermost' }
     its('mode') { should cmp '0644' }
-    its('content') { should include %Q["SiteName": "Mattermost"] }
+    its('content') { should include %("SiteName": "Mattermost") }
   end
 end
