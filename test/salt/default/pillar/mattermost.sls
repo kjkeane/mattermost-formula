@@ -149,6 +149,7 @@ mattermost:
     IosMinVersion: ''
   SqlSettings:
     DriverName: mysql
+    # yamllint disable-line rule:line-length
     DataSource: mmuser:mostest@tcp(localhost:3306)/mattermost_test?charset=utf8mb4,utf8\u0026readTimeout=30s\u0026writeTimeout=30s
     DataSourceReplicas: []
     DataSourceSearchReplicas: []
@@ -276,6 +277,7 @@ mattermost:
     Scope: profile email
     AuthEndpoint: https://accounts.google.com/o/oauth2/v2/auth
     TokenEndpoint: https://www.googleapis.com/oauth2/v4/token
+    # yamllint disable-line rule:line-length
     UserApiEndpoint: https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses,nicknames,metadata
   Office365Settings:
     Enable: false
