@@ -5,12 +5,22 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import mattermost with context %}
 
+mattermost-package-install-pkg-installed:
+  pkg.installed:
+    - name: tar
+
 mattermost-user-present:
   user.present:
     - fullname: Mattermost Service User
     - name: mattermost
     - system: True
     - home: {{ mattermost.dir.basedir }}
+
+mattermost-group-present:
+  group.present:
+    - name: mattermost
+    - addusers:
+      - mattermost
 
 mattermost_install:
   archive.extracted:
@@ -21,3 +31,5 @@ mattermost_install:
     - archive_format: tar
     - options: z
     - skip_verify: True
+    - require:
+      - sls: mattermost-package-install-pkg-installed

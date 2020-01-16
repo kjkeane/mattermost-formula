@@ -3,7 +3,7 @@
 control 'Mattermost package' do
   title 'should be installed'
 
-  describe package('mattermost') do
-    it { should be_installed }
+  describe directory('/opt/mattermost') do
+    its('mode') { should cmp '0644' }
   end
 end
