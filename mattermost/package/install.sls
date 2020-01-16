@@ -22,7 +22,7 @@ mattermost-group-present:
     - addusers:
       - mattermost
 
-mattermost_install:
+mattermost-install-archive-extracted:
   archive.extracted:
     - name: {{ mattermost.dir.installdir }}
     - source: https://releases.mattermost.com/{{ mattermost.pkg.version }}/mattermost-team-{{ mattermost.pkg.version }}-linux-amd64.tar.gz
@@ -32,4 +32,4 @@ mattermost_install:
     - options: z
     - skip_verify: True
     - require:
-      - sls: mattermost-package-install-pkg-installed
+      - pkg: mattermost-package-install-pkg-installed
