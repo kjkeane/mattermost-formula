@@ -1,0 +1,501 @@
+{% set mattermost = salt['pillar.get']('mattermost', {}) %}
+{
+{% set service = mattermost.get('service-settings', {}) %}
+   "ServiceSettings": {
+       "SiteURL": "{{ service.get('SiteURL', '') }}",
+       "WebsocketURL": "{{ service.get('WebsocketURL', '') }}",
+       "LicenseFileLocation": "{{ service.get('LicenseFileLocation', '')}}",
+       "ListenAddress": ":{{ service.get('ListenAddress', '8065') }}",
+       "ConnectionSecurity": "{{ service.get('ConnectionSecurity', '') }}",
+       "TLSCertFile": "{{ service.get('TLSCertFile', '') }}",
+       "TLSKeyFile": "{{ service.get('TLSKeyFile', '') }}",
+       "TLSMinVer": "{{ service.get('TLSMinVer', '1.2') }}",
+       "TLSStrictTransport": {{ service.get('TLSStrictTransport', 'false') }},
+       "TLSStrictTransportMaxAge": {{ service.get('TLSStrictTransportAge', '63072000') }},
+       "TLSOverwriteCiphers": [],
+       "UseLetsEncrypt": {{ service.get('UseLetsEncrypt', 'false') }},
+       "LetsEncryptCertificateCacheFile": "{{ service.get('LetsEncryptCertificateCacheFile', './config/letsencrypt.cache') }}",
+       "Forward80To443": {{ service.get('Forward80To443', 'false') }},
+       "ReadTimeout": {{ service.get('ReadTimeout', '300') }},
+       "WriteTimeout": {{ service.get('WriteTimeout', '300') }},
+       "MaximumLoginAttempts": {{ service.get('MaximumLoginAttempts', '10') }},
+       "GoroutineHealthThreshold": -1,
+       "GoogleDeveloperKey": "{{ service.get('GoogleDeveloperKey', '') }}",
+       "EnableOAuthServiceProvider": {{ service.get('EnableOauthServiceProvider', 'false') }},
+       "EnableIncomingWebhooks": {{ service.get('EnableIncomingWebhooks', 'true') }},
+       "EnableOutgoingWebhooks": {{ service.get('EnableOutgoingWebhooks', 'true') }},
+       "EnableCommands": {{ service.get('EnableCommands', 'true') }},
+       "EnableOnlyAdminIntegrations": {{ service.get('EnableOnlyAdminIntegrations', 'true') }},
+       "EnablePostUsernameOverride": {{ service.get('EnablePostUsernameOverride', 'false') }},
+       "EnablePostIconOverride": {{ service.get('EnablePostIconOverride', 'false') }},
+       "EnableAPIv3": {{ service.get('EnableAPIv3', 'true') }},
+       "EnableLinkPreviews": {{ service.get('EnableLinkPreviews', 'false') }},
+       "EnableTesting": {{ service.get('EnableTesting', 'false') }},
+       "EnableDeveloper": {{ service.get('EnableDeveloper', 'false') }},
+       "EnableSecurityFixAlert": {{ service.get('EnableSecurityFixAlert', 'true') }},
+       "EnableInsecureOutgoingConnections": {{ service.get('EnableInsecureOutgoingConnections', 'false') }},
+       "AllowedUntrustedInternalConnections": "{{ service.get('AllowUntrustedInternalConnections', '') }}",
+       "EnableMultifactorAuthentication": {{ service.get('EnableMultifactorAuthentication', 'false') }},
+       "EnforceMultifactorAuthentication": "{{ service.get('EnforceMultifactorAuthentication', 'false') }}",
+       "EnableUserAccessTokens": "{{ service.get('EnableUserAccessTokens', 'false') }}",
+       "AllowCorsFrom": "{{ service.get('AllowCorsFrom', '') }}",
+       "CorsExposedHeaders": "{{ service.get('CorsExposedHeaders', '') }}",
+       "CorsAllowCredentials": {{ service.get('CorsAllowCredentials', 'false') }},
+       "CorsDebug": {{ service.get('CorsDebug', 'false') }},
+       "AllowCookiesForSubdomains": {{ service.get('AllowCookiesForSubdomain', 'false') }},
+       "SessionLengthWebInDays": {{ service.get('SessionLengthWebInDays', '30') }},
+       "SessionLengthMobileInDays": {{ service.get('SessionLengthMobileInDays', '30') }},
+       "SessionLengthSSOInDays": {{ service.get('SessionLengthSSOInDays', '30') }},
+       "SessionCacheInMinutes": {{ service.get('SessionCacheInMinutes', '10') }},
+       "SessionIdleTimeoutInMinutes": {{ service.get('SessionIdleTimeoutInMinutes', '0') }},
+       "WebsocketSecurePort": {{ service.get('WebsocketSecurePort', '443') }},
+       "WebsocketPort": {{ service.get('WebsocketPort', '80') }},
+       "WebserverMode": "{{ service.get('WebserverMode', 'gzip') }}",
+       "EnableCustomEmoji": {{ service.get('EnableCustomEmoji', 'false') }},
+       "EnableEmojiPicker": {{ service.get('EnableEmojiPicker', 'true') }},
+       "EnableGifPicker": {{ service.get('EnableGifPicker', 'true') }},
+       "GfycatApiKey": "{{ service.get('GfycatApiKey', '2_KtH_W5') }}",
+       "GfycatApiSecret": "{{ service.get('GfycatApiSecret', '3wLVZPiswc3DnaiaFoLkDvB4X0IV6CpMkj4tf2inJRsBY6-FnkT08zGmppWFgeof') }}",
+       "RestrictCustomEmojiCreation": "{{ service.get('RestrictCustomEmojiCreation', 'all') }}",
+       "RestrictPostDelete": "{{ service.get('RestrictPostDelete', 'all') }}",
+       "AllowEditPost": "{{ service.get('AllowEditPost', 'always') }}",
+       "PostEditTimeLimit": {{ service.get('PostEditTimeLimit', '300') }},
+       "ExperimentalEnableAuthenticationTransfer": {{ service.get('ExperimentalEnableAuthenticationTransfer', 'true') }},
+       "TimeBetweenUserTypingUpdatesMilliseconds": {{ service.get('TimeBetweenUserTypingUpdatesMilliseconds', '5000') }},
+       "MinimumHashtagLength": {{ service.get('MinimumHashtagLength', '3') }},
+       "EnablePostSearch": {{ service.get('EnablePostSearch', 'true') }},
+       "MinimumHashtagLength": {{ service.get('MinimumHashtagLength', '3') }},
+       "EnableUserTypingMessages": {{ service.get('EnableUserTypingMessage', 'true') }},
+       "EnableChannelViewedMessages": {{ service.get('EnableChannelViewedMessages', 'true') }},
+       "EnableUserStatuses": {{ service.get('EnableUserStatuses', 'true') }},
+       "ClusterLogTimeoutMilliseconds": {{ service.get('ClusterLogTimeoutMilliseconds', '2000') }},
+       "EnablePreviewFeatures": {{ service.get('EnablePreviewFeatures', 'true') }},
+       "CloseUnusedDirectMessages": {{ service.get('CloseUnusedDirectMessages', 'false') }},
+       "EnableTutorial": {{ service.get('EnableTutorial', 'true') }},
+       "ExperimentalEnableDefaultChannelLeaveJoinMessages": {{ service.get('ExperimentalEnableDefaultChannelLeaveJoinMessages', 'true') }},
+       "ExperimentalGroupUnreadChannels": "{{ service.get('ExperimentalGroupUnreadChannels', 'disabled') }}",
+       "ExperimentalChannelOrganization": {{ service.get('ExperimentalChannelOrganizations', 'false') }},
+       "EnableAPITeamDeletion": {{ service.get('EnableAPITeamDeletion', 'false') }},
+       "ExperimentalEnableHardenedMode": {{ service.get('ExperimentalEnableHardenedMode', 'false') }},
+       "DisableLegacyMFA": {{ service.get('DisableLegacyMFA', 'true') }},
+       "ExperimentalEmailInvitations": {{ service.get('ExperimentalEmailInvitation', 'false') }},
+       "ExperimentalStrictCSRFEnforcement": {{ service.get('ExperimentalStrictCSRFEnforcement', 'false') }},
+       "EnableBotAccountCreation": {{ service.get('EnableBotAccountCreation', 'false') }},
+       "DisableBotsWhenOwnerIsDeactivated": {{ service.get('DisableBotsWhenOwnerIsDeactivated', 'true') }},
+       "EnableLatex": {{ service.get('EnableLatex', 'false') }}
+   },
+{% set team = mattermost.get('team-settings', {}) %}
+   "TeamSettings": {
+       "SiteName": "{{ team.get('SiteName', 'Mattermost') }}",
+       "MaxUsersPerTeam": {{ team.get('MaxUsersPerTeam', '50') }},
+       "EnableTeamCreation": {{ team.get('EnableTeamCreation', 'true') }},
+       "EnableUserCreation": {{ team.get('EnableUserCreation', 'true') }},
+       "EnableOpenServer": {{ team.get('EnableOpenServer', 'false') }},
+       "EnableUserDeactivation": {{ team.get('EnableUserDeactivation', 'false') }},
+       "RestrictCreationToDomains": "{{ team.get('RestrictCreationToDomains', '') }}",
+       "EnableCustomBrand": {{ team.get('EnableCustomBrand', 'false') }},
+       "CustomBrandText": "{{ team.get('CustomBrandText', '') }}",
+       "CustomDescriptionText": "{{ team.get('CustomDescriptionText', '') }}",
+       "RestrictDirectMessage": "{{ team.get('RestrictDirectMessage', 'any') }}",
+       "RestrictTeamInvite": "{{ team.get('RestrictTeamInvite', 'all') }}",
+       "RestrictPublicChannelManagement": "{{ team.get('RestrictPublicChanngelManagement', 'all') }}",
+       "RestrictPrivateChannelManagement": "{{ team.get('RestrictPrivateChannelManagement', 'all') }}",
+       "RestrictPublicChannelCreation": "{{ team.get('RestrictPublicChannelCreation', 'all') }}",
+       "RestrictPrivateChannelCreation": "{{ team.get('RestrictPrivateChannelCreation', 'all') }}",
+       "RestrictPublicChannelDeletion": "{{ team.get('RestrictPublicChannelDeletion', 'all') }}",
+       "RestrictPrivateChannelDeletion": "{{ team.get('RestrictPrivateChannelDeletion', 'all') }}",
+       "RestrictPrivateChannelManageMembers": "{{ team.get('RestrictPrivateChannelManageMembers', 'all') }}",
+       "EnableXToLeaveChannelsFromLHS": {{ team.get('EnableXToLeaveChannelsFromLHS', 'false') }},
+       "UserStatusAwayTimeout": {{ team.get('UserStatusAwayTimeout', '300') }},
+       "MaxChannelsPerTeam": {{ team.get('MaxChannelsPerTeam', '2000') }},
+       "MaxNotificationsPerChannel": {{ team.get('MaxNotificationsPerChannel', '1000') }},
+       "EnableConfirmNotificationsToChannel": {{ team.get('EnableConfirmNotificationsToChannel', 'true') }},
+       "TeammateNameDisplay": "{{ team.get('TeammateNameDisplay', 'username') }}",
+       "ViewArchivedChannels": {{ team.get('ViewArchiveChannels', 'true') }},
+       "ExperimentalEnableAutomaticReplies": {{ team.get('ExperimentalEnableAutomaticReplies', 'false') }},
+       "ExperimentlaHideTownSquareinLHS": {{ team.get('ExperimentalHideTownSquareinLHS', 'false') }},
+       "LockTeammateNameDisplay": {{ team.get('LockTeammateNameDisplay', 'false') }},
+       "ExperimentalTownSquareIsReadOnly": {{ team.get('ExperimentalTownSquareIsReadOnly', 'false') }},
+       "ExperimentalPrimaryTeam": "{{ team.get('ExperimentalPrimaryTeam', '') }}",
+       "ExperimentalDefaultChannels": "{{ team.get('ExperimentalDefaultChannels', '') }}"
+   },
+
+   "ClientRequirements": {
+       "AndroidLatestVersion": "",
+       "AndroidMinVersion": "",
+       "DesktopLatestVersion": "",
+       "DesktopMinVersion": "",
+       "IosLatestVersion": "",
+       "IosMinVersion": ""
+   },
+{% set sql = mattermost.get('SqlSettings', {}) %}
+   "SqlSettings": {
+       "DriverName": "{{ sql.get('DriverName', 'mysql') }}",
+       "DataSource": "{{ sql.get('DataSource', 'mmuser:mostest@tcp(localhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s') }}",
+       "DataSourceReplicas": [{{ sql.get('DataSourceReplicas', '') }}],
+       "DataSourceSearchReplicas": [{{ sql.get('DataSourceSearchReplicas', '') }}],
+       "MaxIdleConns": {{ sql.get('MaxIdleConns', '20') }},
+       "ConnMaxLifetimeMilliseconds": {{ sql.get('ConnMaxLifetimeMilliseconds', '3600000') }},
+       "MaxOpenConns": {{ sql.get('MaxOpenConns', '300') }},
+       "Trace": {{ sql.get('Trace', 'false') }},
+       "AtRestEncryptKey": "{{ sql.get('AtRestEncryptKey', '') }}",
+       "QueryTimeout": {{ sql.get('QueryTimeout', '30') }},
+   },
+{% set log = mattermost.get('LogSettings', {}) %}
+   "LogSettings": {
+       "EnableConsole": {{ log.get('EnableConsole', 'true') }},
+       "ConsoleLevel": "{{ log.get('ConsoleLevel', 'INFO') }}",
+       "EnableFile": {{ log.get('EnableFile', 'true') }},
+       "FileLevel": "{{ log.get('FileLevel', 'INFO') }}",
+       "FileJson": "{{ log.get('FileJson', 'true') }}",
+       "FileLocation": "{{ log.get('FileLocation', '') }}",
+       "EnableWebhookDebugging": {{ log.get('EnableWebhookDebugging', 'true') }},
+       "EnableDiagnostics": {{ log.get('EnableDiagnostics', 'true') }}
+   },
+{% set notification = mattermost.get('NotificationLogSettings', {}) %}
+   "NotificationLogSettings": {
+       "EnableConsole": {{ notification.get('EnableConsole', 'true') }}},
+       "ConsoleLevel": "{{ notification.get('ConsoleLevel', 'INFO') }}",
+       "ConsoleJson": {{ notification.get('ConsoleJson', 'true') }},
+       "EnableFile": {{ notification.get('EnableFile', 'true') }},
+       "FileLevel": "{{ notification.get('FileLevel', 'INFO') }}",
+       "FileJson": {{ notification.get('FileJson', 'true') }},
+       "FileLocation": "{{ notification.get('FileLocation', '') }}"
+   },
+{% set password = mattermost.get('PasswordSettings', {}) %}
+   "PasswordSettings": {
+       "MinimumLength": {{ password.get('MinimumLength', '5') }},
+       "Lowercase": {{ password.get('Lowercase', 'false') }},
+       "Number": {{ password.get('Number', 'false') }},
+       "Uppercase": {{ password.get('Uppercase', 'false') }},
+       "Symbol": {{ password.get('Symbol', 'false') }}
+   },
+{% set file = mattermost.get('FileSettings', {}) %}
+   "FileSettings": {
+       "EnableFileAttachments": {{ file.get('EnableFileAttachments', 'true') }},
+       "EnableMobileUpload": {{ file.get('EnableMobileUpload', 'true') }},
+       "EnableMobileDownload": {{ file.get('EnableMobileDownload', 'true') }},
+       "MaxFileSize": {{ file.get('MaxFileSize', '52428800') }},
+       "DriverName": "{{ file.get('DriverName', 'local') }}",
+       "Directory": "{{ file.get('Directory', './data/') }}",
+       "EnablePublicLink": {{ file.get('EnablePublicLink', 'false') }},
+       "PublicLinkSalt": "",
+       "InitialFont": "luximbi.ttf",
+       "AmazonS3AccessKeyId": "{{ file.get('AmazonS3AccessKeyId', '') }}",
+       "AmazonS3SecretAccessKey": "{{ file.get('AmazonS3SecretAccessKey', '') }}",
+       "AmazonS3Bucket": "{{ file.get('AmazonS3Bucket', '') }}",
+       "AmazonS3Region": "{{ file.get('AmazonS3Region', '') }}",
+       "AmazonS3Endpoint": "{{ file.get('AmazonS3Endpoint', 's3.amazonaws.com') }}",
+       "AmazonS3SSL": {{ file.get('AmazonS3SSL', 'true') }},
+       "AmazonS3SignV2": {{ file.get('AmazonS3SignV2', 'false') }},
+       "AmazonS3SSE": {{ file.get('AmazonS3SSE', 'false') }},
+       "AmazonS3Trace": {{ file.get('AmazonS3Trace', 'false') }}
+   },
+{% set email = mattermost.get('EmailSettings', {}) %}
+   "EmailSettings": {
+       "EnableSignUpWithEmail": {{ email.get('EnableSignUpWithEmail', 'true') }},
+       "EnableSignInWithEmail": {{ email.get('EnableSignInWithEmail', 'true') }},
+       "EnableSignInWithUsername": {{ email.get('EnableSignInWithUsername', 'true') }},
+       "SendEmailNotifications": {{ email.get('SendEmailNotification', 'false') }},
+       "UseChannelInEmailNotifications": {{ email.get('UseChannelInEmailNotifications', 'false') }},
+       "RequireEmailVerification": {{ email.get('RequireEmailVerification', 'false') }},
+       "FeedbackName": "{{ email.get('FeedbackName', '') }}",
+       "FeedbackEmail": "{{ email.get('FeedbackEmail', '') }}",
+       "FeedbackOrganization": "{{ email.get('FeedbackOrganization', '') }}",
+       "EnableSMTPAuth": {{ email.get('EnableSMTPAuth', 'false') }},
+       "SMTPUsername": "{{ email.get('SMTPUsername', '') }}",
+       "SMTPPassword": "{{ email.get('SMTPPassword', '') }}",
+       "SMTPServer": "{{ email.get('SMTPServer', '') }}",
+       "SMTPPort": "{{ email.get('SMTPPort', '') }}",
+       "ConnectionSecurity": "{{ email.get('ConnectionSecurity', '') }}",
+       "InviteSalt": "{{ email.get('InviteSalt', '') }}",
+       "SendPushNotifications": {{ email.get('SendPushNotification', 'false') }},
+       "PushNotificationServer": "{{ email.get('PushNotificationServer', '') }}",
+       "PushNotificationContents": "{{ email.get('PushNotificationContents', 'generic') }}",
+       "EnableEmailBatching": {{ email.get('EnableEmailBatching', 'false') }},
+       "EmailBatchingBufferSize": {{ email.get('EmailBatchingBufferSize', '256') }},
+       "EmailBatchingInterval": {{ email.get('EmailBatchingInterval', '30') }},
+       "EnablePreviewModeBanner": {{ email.get('EnablePreviewModeBanner', 'true') }},
+       "SkipServerCertificateVerification": {{ email.get('SkipServerCertificationVerification', 'false') }},
+       "EmailNotificationContentsType": "{{ email.get('EmailNotificationContentsType', 'full') }}",
+       "LoginButtonColor": "{{ email.get('LoginButtonColor', '') }}",
+       "LoginButtonBorderColor": "{{ email.get('LoginButtonBorderColor', '') }}",
+       "LoginButtonTextColor": "{{ email.get('LoginButtonTextColor', '') }}"
+   },
+{% set rate_limit = mattermost.get('RateLimitSettings', {}) %}
+   "RateLimitSettings": {
+       "Enable": {{ rate_limit.get('Enable', 'false') }},
+       "PerSec": {{ rate_limit.get('PerSec', '10') }},
+       "MaxBurst": {{ rate_limit.get('MaxBurst', '100') }},
+       "MemoryStoreSize": {{ rate_limit.get('MemoryStoreSize', '10000') }},
+       "VaryByRemoteAddr": {{ rate_limit.get('VaryByRemoteAddr', 'true') }},
+       "VaryByUser": {{ rate_limit.get('VaryByUser', 'false') }},
+       "VaryByHeader": "{{ rate_limit.get('VaryByHeader', '') }}"
+   },
+{% set privacy = mattermost.get('PrivacySettings', {}) %}
+   "PrivacySettings": {
+       "ShowEmailAddress": {{ privacy.get('ShowEmailAddress', 'true') }},
+       "ShowFullName": {{ privacy.get('ShowFullName', 'true') }}
+   },
+{% set support = mattermost.get('SupportSettings', {}) %}
+   "SupportSettings": {
+       "TermsOfServiceLink": "{{ support.get('TermsOfServiceLink', 'https://about.mattermost.com/default-terms/') }}",
+       "PrivacyPolicyLink": "{{ support.get('PrivacyPolicyLink', 'https://about.mattermost.com/default-privacy-policy/') }}",
+       "AboutLink": "{{ support.get('AboutLink', 'https://about.mattermost.com/default-about/') }}",
+       "HelpLink": "{{ support.get('HelpLink', 'https://about.mattermost.com/default-help/') }}",
+       "ReportAProblemLink": "{{ support.get('ReportAProblemLink', 'https://about.mattermost.com/default-report-a-problem/') }}",
+       "SupportEmail": "{{ support.get('SupportEmail', 'feedback@mattermost.com') }}"
+   },
+{% set announcement = mattermost.get('AnnouncementSettings', {}) %}
+   "AnnouncementSettings": {
+       "EnableBanner": {{ announcement.get('EnableBanner', 'false') }},
+       "BannerText": "{{ announcement.get('BannerText', '') }}",
+       "BannerColor": "{{ announcement.get('BannerColor', '#f2a93b') }}",
+       "BannerTextColor": "{{ announcement.get('BannerTextColor', '#333333') }}",
+       "AllowBannerDismissal": {{ announcement.get('AllowBannerDismissal', 'true') }}
+   },
+{% set theme = mattermost.get('ThemeSettings', {}) %}
+   "ThemeSettings": {
+       "EnableThemeSelection": {{ theme.get('EnableThemeSelection', 'true') }},
+       "DefaultTheme": "{{ theme.get('DefaultTheme', 'default') }}",
+       "AllowCustomThemes": {{ theme.get('AllowCustomThemes', 'true') }},
+       "AllowedThemes": [{{ theme.get('AllowedThemes', '') }}]
+   },
+{% set git = mattermost.get('GitLabSettings', {}) %}
+   "GitLabSettings": {
+       "Enable": {{ git.get('Enable', 'false') }},
+       "Secret": "{{ git.get('Secret', '') }}",
+       "Id": "{{ git.get('Id', '') }}",
+       "Scope": "{{ git.get('Scope', '') }}",
+       "AuthEndpoint": "{{ git.get('AuthEndpoint', '') }}",
+       "TokenEndpoint": "{{ git.get('TokenEndpoint', '') }}",
+       "UserApiEndpoint": "{{ git.get('UserApiEndpoint', '') }}"
+   },
+{% set google = mattermost.get('GoogleSettings', {}) %}
+   "GoogleSettings": {
+       "Enable": {{ google.get('Enable' , 'false') }},
+       "Secret": "{{ google.get('Secret', '') }}",
+       "Id": "{{ google.get('Id', '') }}",
+       "Scope": "{{ google.get('Scope', 'profile email') }}",
+       "AuthEndpoint": "{{ google.get('AuthEndpoint', 'https://accounts.google.com/o/oauth2/v2/auth') }}",
+       "TokenEndpoint": "{{ google.get('TokenEndpoint', 'https://www.googleapis.com/oauth2/v4/token') }}",
+       "UserApiEndpoint": "{{ google.get('UserApiEndpoint', 'https://www.googleapis.com/plus/v1/people/me') }}"
+   },
+{% set office = mattermost.get('Office365Settings', {}) %}
+   "Office365Settings": {
+       "Enable": {{ office.get('Enable', 'false') }},
+       "Secret": "{{ office.get('Secret', '') }}",
+       "Id": "{{ office.get('Id', '') }}",
+       "Scope": "{{ office.get('Scope', 'User.Read') }}",
+       "AuthEndpoint": "{{ office.get('AuthEndpoint', 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize') }}",
+       "TokenEndpoint": "{{ office.get('TokenEndpoint', 'https://login.microsoftonline.com/common/oauth2/v2.0/token') }}",
+       "UserApiEndpoint": "{{ office.get('UserApiEndpoint', 'https://graph.microsoft.com/v1.0/me') }}"
+   },
+{% set ldap = mattermost.get('LdapSettings', {}) %}
+   "LdapSettings": {
+       "Enable": {{ ldap.get('Enable', 'false') }},
+       "EnableSync": {{ ldap.get('EnableSync', 'false') }},
+       "LdapServer": "{{ ldap.get('LdapServer', '') }}",
+       "LdapPort": {{ ldap.get('LdapPort', '389') }},
+       "ConnectionSecurity": "{{ ldap.get('ConnectionSecurity', '') }}",
+       "BaseDN": "{{ ldap.get('BaseDN', '') }}",
+       "BindUsername": "{{ ldap.get('BindUsername', '') }}",
+       "BindPassword": "{{ ldap.get('BindPassword', '') }}",
+       "UserFilter": "{{ ldap.get('UserFilter', '') }}",
+       "GroupFilter": "{{ ldap.get('GroupFilter', '') }}",
+       "GuestFilter": "{{ ldap.get('GuestFilter', '') }},
+       "GroupDisplayNameAttribute": "{{ ldap.get('GroupDisplayNameAttribute', '') }}",
+       "GroupIdAttribute": "{{ ldap.get('GroupIDAttribute', '') }}",
+       "FirstNameAttribute": "{{ ldap.get('FirstNameAttribute', '') }}",
+       "LastNameAttribute": "{{ ldap.get('LastNameAttribute', '') }}",
+       "EmailAttribute": "{{ ldap.get('EmailAttribute', '') }}",
+       "UsernameAttribute": "{{ ldap.get('UsernameAttribute', '') }}",
+       "NicknameAttribute": "{{ ldap.get('NicknameAttribute', '') }}",
+       "IdAttribute": "{{ ldap.get('IdAttribute' '') }}",
+       "PositionAttribute": "{{ ldap.get('PositionAttribute', '') }}",
+       "LoginIdAttribute": "{{ ldap.get('LoginIdAttribute', '') }}",
+       "SyncIntervalMinutes": {{ ldap.get('SyncIntervalMinutes', '60') }},
+       "SkipCertificateVerification": {{ ldap.get('SkipCertificationVerification', 'false') }},
+       "QueryTimeout": {{ ldap.get('QueryTimeout', '60') }},
+       "MaxPageSize": {{ ldap.get('MaxPageSize', '0') }},
+       "LoginFieldName": "{{ ldap.get('LoginFieldName', '') }}",
+       "LoginButtonColor": "{{ ldap.get('LoginButtonColor', '') }}",
+       "LoginButtonBorderColor": "{{ ldap.get('LoginButtonBorderColor', '') }}",
+       "LoginButtonTextColor": "{{ ldap.get('LoginButtonTextColor', '') }}",
+       "Trace": {{ ldap.get('Trace', 'false') }}
+   },
+{% set compliance = mattermost.get('ComplianceSettings', {}) %}
+   "ComplianceSettings": {
+       "Enable": {{ compliance.get('Enable', 'false') }},
+       "Directory": "{{ compliance.get('Directory', './data/') }}",
+       "EnableDaily": {{ compliance.get('EnableDaily', 'false') }}
+   },
+{% set localization = mattermost.get('LocalizationSettings', {}) %}
+   "LocalizationSettings": {
+       "DefaultServerLocale": "{{ localization.get('DefaultServerLocale', 'en') }}",
+       "DefaultClientLocale": "{{ localization.get('DefaultClientLocale', 'en') }}",
+       "AvailableLocales": "{{ localization.get('AvailableLocales', '') }}"
+   },
+{% set saml = mattermost.get('SamlSettings', {}) %}
+   "SamlSettings": {
+       "Enable": {{ saml.get('Enable', 'false') }},
+       "EnableSyncWithLdap": {{ saml.get('EnableSyncWithLdap', 'false') }},
+       "EnableSyncWithLdapIncludeAuth": {{ saml.get('EnableSyncWithLdapIncludeAuth', 'false') }},
+       "Verify": {{ saml.get('Verify', 'true') }},
+       "Encrypt": {{ saml.get('Encrypt', 'true') }},
+       "IdpUrl": "{{ saml.get('IdpUrl', '') }}",
+       "IdpDescriptorUrl": "{{ saml.get('IdpDescriptorUrl', '') }}",
+       "AssertionConsumerServiceURL": "{{ saml.get('AssertionConsumerServiceURL', '') }}",
+       "SignatureAlgorithm": "RSAwithSHA1",
+       "CanonicalAlgorithm": "Canonical1.0",
+       "ScopingIDPProviderId": "{{ saml.get('ScopingIDPProviderId', '') }}",
+       "ScopingIDPName": "{{ saml.get('ScopingIDPName', '') }}",
+       "IdpCertificateFile": "{{ saml.get('IdpCertificateFile', '') }}",
+       "PublicCertificateFile": "{{ saml.get('public-cert-file', '') }}",
+       "PrivateKeyFile": "{{ saml.get('PrivateKeyFile', '') }}",
+       "IdAttribute": "{{ saml.get('IdAttribute', '') }}",
+       "GuestAttribute": "{{ saml.get('GuestAttribute', '') }}",
+       "FirstNameAttribute": "{{ saml.get('FirstNameAttribute', '') }}",
+       "LastNameAttribute": "{{ saml.get('LastNameAttribute', '') }}",
+       "EmailAttribute": "{{ saml.get('EmailAttribute', '') }}",
+       "UsernameAttribute": "{{ saml.get('UsernameAttribute', '') }}",
+       "NicknameAttribute": "{{ saml.get('NicknameAttribute', '') }}",
+       "LocaleAttribute": "{{ saml.get('LocaleAttribute', '') }}",
+       "PositionAttribute": "{{ saml.get('PositionAttribute', '') }}",
+       "LoginButtonText": "{{ saml.get('LoginButtonText', 'SAML') }}"
+       "LoginButtonColor": "{{ saml.get('LoginButtonColor', '') }}",
+       "LoginButtonBorderColor": "{{ saml.get('LoginButtonBorderColor', '') }}",
+       "LoginButtonTextColor": "{{ saml.get('LoginButtonTextColor', '') }}"
+   },
+{% set native_app = mattermost.get('NativeAppSettings', {}) %}
+   "NativeAppSettings": {
+       "AppDownloadLink": "{{ native_app.get('AppDownloadLink', 'https://about.mattermost.com/downloads/#mattermostApps') }}",
+       "AndroidAppDownloadLink": "{{ native_app.get('AndroidAppDownloadLink', 'https://about.mattermost.com/mattermost-android-app/') }}",
+       "IosAppDownloadLink": "{{ native_app.get('IosAppDownloadLink', 'https://about.mattermost.com/mattermost-ios-app/') }}"
+   },
+{% set cluster = mattermost.get('ClusterSettings', {}) %}
+   "ClusterSettings": {
+       "Enable": {{ cluster.get('Enable', 'false') }},
+       "ClusterName": "{{ cluster.get('Name', '') }}",
+       "OverrideHostname": "{{ cluster.get('OverrideHostname', '') }}",
+       "NetworkInterface": "{{ cluster.get('NetworkInterface', '') }}",
+       "BindAddress": "{{ cluster.get('BindAddress', '') }}",
+       "AvertiseAddress": "{{ cluster.get('AdvertiseAddress', '') }}",
+       "UseIpAddress": {{ cluster.get('UseIpAddress', 'true') }},
+       "UseExperimentalGossip": {{ cluster.get('UseExperimentalGossip', 'false') }},
+       "ReadOnlyConfig": {{ cluster.get('ReadOnlyConfig', 'true') }},
+       "GossipPort": {{ cluster.get('GossipPort', '8074') }},
+       "StreamingPort": {{ cluster.get('StreamingPort', '8075') }},
+       "MaxIdleConns": {{ cluster.get('MaxIdleConns', '100') }},
+       "MaxIdleConnsPerHost": {{ cluster.get('MaxIdleConnsPerHost', '120') }},
+       "IdleConnTimeoutMilliseconds": {{ cluster.get('IdleConnTimeoutMilliseconds', '90000') }}
+   },
+{% set metric = mattermost.get('MetricSettings', {}) %}
+   "MetricsSettings": {
+       "Enable": {{ metric.get('Enable', 'false') }},
+       "BlockProfileRate": {{ metric.get('BlockProfileRate', '0') }},
+       "ListenAddress": ":{{ metric.get('ListenAddress', '8067') }}"
+   },
+
+{% set experimental = mattermost.get('ExperimentalSettings', {}) %}
+   "ExperimentalSettings": {
+       "ClientSideCertEnable": {{ experimental.get('ClientSideCertEnable', 'false') }},
+       "ClientSideCertCheck": "{{ experimental.get('ClientSideCertCheck', 'secondary') }}",
+       "DisablePostMetadata": {{ experimental.get('DisablePostMetadata', 'false') }},
+       "LinkMetadataTimeoutMilliseconds": {{ experimental.get('LinkMetadataTimeoutMilliseconds', '5000') }},
+       "RestrictSystemAdmin": {{ experimental.get('RestrictSystemAdmin', 'false') }}
+   },
+{% set analytics = mattermost.get('AnalyticsSettings', {}) %}
+   "AnalyticsSettings": {
+       "MaxUsersForStatistics": {{ analytics.get('MaxUsersforStatistics', '2500') }}
+   },
+{% set elasticsearch = mattermost.get('ElasticsearchSettings', {}) %}
+   "ElasticsearchSettings": {
+       "ConnectionUrl": "{{ elasticsearch.get('ConnectionUrl', 'http://localhost:9200') }}",
+       "Username": "{{ elasticsearch.get('Username', 'elastic') }}",
+       "Password": "{{ elasticsearch.get('Password', 'changeme') }}",
+       "EnableIndexing": {{ elasticsearch.get('EnableIndexing', 'false') }},
+       "EnableSearching": {{ elasticsearch.get('EnableSearching', 'false') }},
+       "EnableAutomcomplete": {{ elasticsearch.get('EnableAutocomplete', 'false') }},
+       "Sniff": {{ elasticsearch.get('Sniff', 'true') }},
+       "PostIndexReplicas": {{ elasticsearch.get('PostIndexReplicas', '1') }},
+       "PostIndexShards": {{ elasticsearch.get('PostIndexShards', '1') }},
+       "ChannelIndexReplicas": {{ elasticsearch.get('ChannelIndexReplicas', '1') }},
+       "ChannelIndexShards": {{ elasticsearch.get('ChannelIndexShards', '1') }},
+       "UserIndexReplicas": {{ elasticsearch.get('UserIndexReplicas', '1') }},
+       "UserIndexShards": {{ elasticsearch.get('UserIndexShards', '1') }},
+       "AggregatePostsAfterDays": {{ elasticsearch.get('AggregatePostsAfterDays', '365') }},
+       "PostsAggregatorJobStartTime": "{{ elasticsearch.get('PostsAggregatorJobStartTime', '03:00' ) }}",
+       "IndexPrefix": "{{ elasticsearch.get('IndexPrefix', '') }}",
+       "LiveIndexingBatchSize": {{ elasticsearch.get('LiveIndexingBatchSize', '1') }},
+       "BulkIndexingTimeWindowSeconds": {{ elasticsearch.get('BulkIndexingTimeWindowSeconds', '3600') }},
+       "RequestTimeoutSeconds": {{ elasticsearch.get('RequestTimeoutSeconds', '30') }}
+   },
+{% set data_retention = mattermost.get('DataRetentionSettings', {}) %}
+   "DataRetentionSettings": {
+       "EnableMessageDeletion": {{ data_retention.get('EnableMessageDeletion', 'false') }},
+       "EnableFileDeletion": {{ data_retention.get('EnableFileDeletion', 'false') }},
+       "MessageRetentionDays": {{ data_retention.get('MessageRetentionDays', '365') }},
+       "FileRetentionDays": {{ data_retention.get('FileRetentionDays', '365') }},
+       "DeletionJobStartTime": "{{ data_retention.get('DeletionJobStartTime', '02:00') }}"
+   },
+{% set export = mattermost.get('MessageExportSettings', {}) %}
+   "MessageExportSettings": {
+       "EnableExport": {{ export.get('Enable', 'false') }},
+       "DailyRunTime": "{{ export.get('DailyRuntime', '01:00') }}",
+       "ExportFromTimestamp": {{ export.get('ExportTimestamp', '0') }},
+       "FileLocation": "{{ export.get('FileLocation', 'export') }}",
+       "BatchSize": {{ export.get('BatchSize', '10000') }},
+       "GlobalRelaySettings": {
+           "CustomerType": "A9",
+           "SmtpUsername": "",
+           "SmtpPassword": "",
+           "EmailAddress": ""
+       }
+   },
+{% set job = mattermost.get('JobSettings', {}) %}
+   "JobSettings": {
+       "RunJobs": {{ job.get('RunJobs', 'true') }},
+       "RunScheduler": {{ job.get('RunScheduler', 'true') }}
+   },
+{% set plugin = mattermost.get('PluginSettings', {}) %}
+   "PluginSettings": {
+       "Enable": {{ plugin.get('Enable', 'true') }},
+       "EnableUploads": {{ plugin.get('EnableUploads', 'false') }},
+       "AllowInsecureDownloadUrl": {{ plugin.get('AllowInsecureDownloadUrl', 'false') }},
+       "EnableHealthCheck": {{ plugin.get('EnableHealthCheck', 'false') }},
+       "Directory": "{{ plugin.get('Directory', './plugins') }}",
+       "ClientDirectory": "{{ plugin.get('ClientDirectory', './client/plugins') }}",
+       "Plugins": {},
+       "PluginStates": {
+         "com.mattermost.nps": {
+           "Enable": true
+         }
+       },
+       "EnableMarketplace": "{{ plugin.get('EnableMarketplace', 'true') }}",
+       "RequirePluginSignature": "{{ plugin.get('RequirePluginSignature', 'false') }}",
+       "MarketplaceUrl": "https://api.integrations.mattermost.com",
+       "SignaturePublicKeyFiles": []
+   },
+
+{% set display = mattermost.get('DisplaySettings', {}) %}
+   "DisplaySettings": {
+       "CustomURLSchemes": [],
+       "ExperimentalTimezone": {{ display.get('ExperimentalTimezone', 'false') }}
+   },
+
+{% set guest = mattermost.get('GuestAccountSettings', {}) %}
+  "GuestAccountSettings": {
+    "Enable": {{ guest.get('Enable', 'false') }},
+    "AllowEmailAccounts": {{ guest.get('AllowEmailAccounts', 'false') }},
+    "EnforceMultifactorAuthentication": {{ guest.get('EnforceMultifactorAuthentication', 'false') }},
+    "RestrictCreationToDomains": "{{ guest.get('RestrictToDomains', {}) }}"
+
+{% set image = mattermost.get('ImageProxySettings', {}) %}
+   "ImageProxySettings": {
+       "Enable": {{ image.get('Enable', 'true') }},
+       "ImageProxyType": "{{ image.get('ImageProxyType', 'local') }}",
+       "RemoteImageProxyURL": "{{ image.get('RemoteImageProxyURL', '') }}",
+       "RemoteImageProxyOptions": "{{ image.get('RemoteImageProxyOptions', '') }}"
+   }
+}
