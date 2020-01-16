@@ -37,7 +37,6 @@ mattermost-service-running-service-running:
   service.running:
     - name: {{ mattermost.service.name }}
     - enable: True
-    - reload: True
     - require:
       - sls: {{ sls_config_file }}
       - cmd: mattermost-service-running-service-reload
