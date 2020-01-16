@@ -4,7 +4,7 @@
    "ServiceSettings": {
        "SiteURL": "{{ service.get('SiteURL', '') }}",
        "WebsocketURL": "{{ service.get('WebsocketURL', '') }}",
-       "LicenseFileLocation": "{{ service.get('LicenseFileLocation', '')}}",
+       "LicenseFileLocation": "{{ service.get('LicenseFileLocation', '') }}",
        "ListenAddress": ":{{ service.get('ListenAddress', '8065') }}",
        "ConnectionSecurity": "{{ service.get('ConnectionSecurity', '') }}",
        "TLSCertFile": "{{ service.get('TLSCertFile', '') }}",
@@ -154,7 +154,7 @@
    },
 {% set notification = mattermost.get('NotificationLogSettings', {}) %}
    "NotificationLogSettings": {
-       "EnableConsole": {{ notification.get('EnableConsole', 'true') }}},
+       "EnableConsole": {{ notification.get('EnableConsole', 'true') }},
        "ConsoleLevel": "{{ notification.get('ConsoleLevel', 'INFO') }}",
        "ConsoleJson": {{ notification.get('ConsoleJson', 'true') }},
        "EnableFile": {{ notification.get('EnableFile', 'true') }},
