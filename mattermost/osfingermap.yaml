@@ -25,5 +25,5 @@ CentOS-6:
 # os: OEL
 Oracle Linux Server-6:
   service:
-    file: 'etc/init/mattermost.conf'
+    file: '/etc/init/mattermost.conf'
     source: 'salt://mattermost/files/default/init.jinja'
