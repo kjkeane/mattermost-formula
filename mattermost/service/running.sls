@@ -19,6 +19,8 @@ mattermost-service-file-managed:
     - context:
         mattermost: {{ mattermost | json }}
     - template: jinja
+    - require:
+      - sls: {{ sls_config_file }}
 
 mattermost-service-running-service-reload:
 {%- if grains.init == 'upstart' %}
@@ -32,6 +34,8 @@ mattermost-service-running-service-reload:
     - onchanges:
       - file: mattermost-service-file-managed
 {%- endif %}
+    - require:
+      - sls: {{ sls_config_file }}
 
 mattermost-service-running-service-running:
   service.running:
