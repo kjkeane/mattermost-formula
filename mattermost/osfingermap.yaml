@@ -14,16 +14,16 @@
 Red Hat Enterprise Linux Server-6:
   service:
     file: '/etc/init/mattermost.conf'
-    source: 'salt://mattermost/files/default/init.jinja'
+    source: salt://mattermost/files/default/init.jinja
 
 # os: CentOS
 CentOS-6:
   service:
     file: '/etc/init/mattermost.conf'
-    source: 'salt://mattermost/files/default/init.jinja'
+    source: salt://mattermost/files/default/init.jinja
 
 # os: OEL
 Oracle Linux Server-6:
   service:
     file: '/etc/init/mattermost.conf'
-    source: 'salt://mattermost/files/default/init.jinja'
+    source: salt://mattermost/files/default/init.jinja
