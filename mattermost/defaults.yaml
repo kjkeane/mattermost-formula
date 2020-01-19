@@ -4,7 +4,7 @@
 mattermost:
   pkg:
     name: mattermost
-    version: '5.18.1'
+    version: "5.18.1"
 
   user: mattermost
   group: mattermost
@@ -17,20 +17,20 @@ mattermost:
 
   service:
     name: mattermost
-    file: '/etc/systemd/system/mattermost.service'
+    file: "/etc/systemd/system/mattermost.service"
     source: salt://mattermost/files/default/systemd.jinja
     sql: postgresql-10
 
   # Required settings to start Mattermost
   ServiceSettings:
-    SiteURL: ''
-    WebsocketURL: ''
-    LicenseFileLocation: ''
+    SiteURL: ""
+    WebsocketURL: ""
+    LicenseFileLocation: ""
     ListenAddress: ":8065"
-    ConnectionSecurity: ''
-    TLSCertFile: "/path/to/cert"
-    TLSKeyFile: "/path/to/key"
-    TLSMinVer: '1.2'
+    ConnectionSecurity: ""
+    TLSCertFile: ""
+    TLSKeyFile: ""
+    TLSMinVer: "1.2"
     TLSStrictTransport: false
     TLSStrictTransportMaxAge: 63072000
     TLSOverwriteCiphers: []
@@ -42,7 +42,7 @@ mattermost:
     WriteTimeout: 300
     MaximumLoginAttempts: 10
     GoroutineHealthThreshold: -1
-    GoogleDeveloperKey: ''
+    GoogleDeveloperKey: ""
     EnableOAuthServiceProvider: false
     EnableIncomingWebhooks: true
     EnableOutgoingWebhooks: true
@@ -55,20 +55,20 @@ mattermost:
     EnableDeveloper: false
     EnableSecurityFixAlert: true
     EnableInsecureOutgoingConnections: false
-    AllowedUntrustedInternalConnections: ''
+    AllowedUntrustedInternalConnections: ""
     EnableMultifactorAuthentication: false
     EnforceMultifactorAuthentication: false
     EnableUserAccessTokens: false
-    AllowCorsFrom: ''
-    CorsExposedHeaders: ''
+    AllowCorsFrom: ""
+    CorsExposedHeaders: ""
     CorsAllowCredentials: false
     CorsDebug: false
     AllowCookiesForSubdomains: false
-    SessionLengthWebInDays: 30
-    SessionLengthMobileInDays: 30
+    SessionLengthWebInDays: 180
+    SessionLengthMobileInDays: 180
     SessionLengthSSOInDays: 30
     SessionCacheInMinutes: 10
-    SessionIdleTimeoutInMinutes: 10
+    SessionIdleTimeoutInMinutes: 43200
     WebsocketSecurePort: 443
     WebsocketPort: 80
     WebserverMode: gzip
@@ -95,12 +95,12 @@ mattermost:
     ExperimentalEnableDefaultChannelLeaveJoinMessages: true
     ExperimentalGroupUnreadChannels: disabled
     ExperimentalChannelOrganization: false
-    ImageProxyType: ''
-    ImageProxyURL: ''
-    ImageProxyOptions: ''
+    ImageProxyType: ""
+    ImageProxyURL: ""
+    ImageProxyOptions: ""
     EnableAPITeamDeletion: false
     ExperimentalEnableHardenedMode: false
-    DisableLegacyMFA: false
+    DisableLegacyMFA: true
     ExperimentalStrictCSRFEnforcement: false
     EnableEmailInvitations: false
     DisableBotsWhenOwnerIsDeactivated: true
@@ -114,10 +114,10 @@ mattermost:
     EnableUserCreation: true
     EnableOpenServer: false
     EnableUserDeactivation: false
-    RestrictCreationToDomains: ''
+    RestrictCreationToDomains: ""
     EnableCustomBrand: false
-    CustomBrandText: ''
-    CustomDescriptionText: ''
+    CustomBrandText: ""
+    CustomDescriptionText: ""
     RestrictDirectMessage: any
     RestrictTeamInvite: all
     RestrictPublicChannelManagement: all
@@ -138,26 +138,26 @@ mattermost:
     ExperimentalHideTownSquareinLHS: false
     ExperimentalTownSquareIsReadOnly: false
     LockTeammateNameDisplay: false
-    ExperimentalPrimaryTeam: ''
+    ExperimentalPrimaryTeam: ""
     ExperimentalDefaultChannels: []
   ClientRequirements:
-    AndroidLatestVersion: ''
-    AndroidMinVersion: ''
-    DesktopLatestVersion: ''
-    DesktopMinVersion: ''
-    IosLatestVersion: ''
-    IosMinVersion: ''
+    AndroidLatestVersion: ""
+    AndroidMinVersion: ""
+    DesktopLatestVersion: ""
+    DesktopMinVersion: ""
+    IosLatestVersion: ""
+    IosMinVersion: ""
   SqlSettings:
     DriverName: mysql
-    # yamllint disable-line rule:line-length
-    DataSource: mmuser:mostest@tcp(localhost:3306)/mattermost_test?charset=utf8mb4,utf8\u0026readTimeout=30s\u0026writeTimeout=30s
+    # yamllint disable-lint rule:line-length
+    DataSource: mmuser:mostest@tcp(localhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s
     DataSourceReplicas: []
     DataSourceSearchReplicas: []
     MaxIdleConns: 20
     ConnMaxLifetimeMilliseconds: 3600000
     MaxOpenConns: 300
     Trace: false
-    AtRestEncryptKey: ''
+    AtRestEncryptKey: ""
     QueryTimeout: 30
   LogSettings:
     EnableConsole: true
@@ -166,23 +166,23 @@ mattermost:
     EnableFile: true
     FileLevel: INFO
     FileJson: true
-    FileLocation: ''
+    FileLocation: ""
     EnableWebhookDebugging: true
     EnableDiagnostics: true
   NotificationLogSettings:
     EnableConsole: true
-    ConsoleLevel: DEBUG
+    ConsoleLevel: INFO
     ConsoleJson: true
     EnableFile: true
     FileLevel: INFO
     FileJson: true
-    FileLocation: ''
+    FileLocation: ""
   PasswordSettings:
-    MinimumLength: 5
-    Lowercase: false
+    MinimumLength: 10
+    Lowercase: true
     Number: true
-    Uppercase: false
-    Symbol: false
+    Uppercase: true
+    Symbol: true
   FileSettings:
     EnableFileAttachments: true
     EnableMobileUpload: true
@@ -191,12 +191,12 @@ mattermost:
     DriverName: local
     Directory: "./data/"
     EnablePublicLink: false
-    PublicLinkSalt: ''
+    PublicLinkSalt: ""
     InitialFont: nunito-bold.ttf
-    AmazonS3AccessKeyId: ''
-    AmazonS3SecretAccessKey: ''
-    AmazonS3Bucket: ''
-    AmazonS3Region: ''
+    AmazonS3AccessKeyId: ""
+    AmazonS3SecretAccessKey: ""
+    AmazonS3Bucket: ""
+    AmazonS3Region: ""
     AmazonS3Endpoint: s3.amazonaws.com
     AmazonS3SSL: true
     AmazonS3SignV2: false
@@ -206,19 +206,19 @@ mattermost:
     EnableSignUpWithEmail: true
     EnableSignInWithEmail: true
     EnableSignInWithUsername: true
-    SendEmailNotifications: true
+    SendEmailNotifications: false
     UseChannelInEmailNotifications: false
     RequireEmailVerification: false
-    FeedbackName: ''
-    FeedbackEmail: test@example.com
-    ReplyToAddress: test@example.com
-    FeedbackOrganization: ''
+    FeedbackName: ""
+    FeedbackEmail: ""
+    ReplyToAddress: ""
+    FeedbackOrganization: ""
     EnableSMTPAuth: false
-    SMTPUsername: ''
-    SMTPPassword: ''
-    SMTPServer: localhost
-    SMTPPort: '10025'
-    ConnectionSecurity: ''
+    SMTPUsername: ""
+    SMTPPassword: ""
+    SMTPServer: ""
+    SMTPPort: "10025"
+    ConnectionSecurity: ""
     SendPushNotifications: true
     PushNotificationServer: https://push-test.mattermost.com
     PushNotificationContents: generic
@@ -238,7 +238,7 @@ mattermost:
     MemoryStoreSize: 10000
     VaryByRemoteAddr: true
     VaryByUser: false
-    VaryByHeader: ''
+    VaryByHeader: ""
   PrivacySettings:
     ShowEmailAddress: true
     ShowFullName: true
@@ -253,7 +253,7 @@ mattermost:
     CustomTermsOfServiceReAcceptancePeriod: 365
   AnnouncementSettings:
     EnableBanner: false
-    BannerText: ''
+    BannerText: ""
     BannerColor: "#f2a93b"
     BannerTextColor: "#333333"
     AllowBannerDismissal: true
@@ -264,16 +264,16 @@ mattermost:
     AllowedThemes: []
   GitLabSettings:
     Enable: false
-    Secret: ''
-    Id: ''
-    Scope: ''
-    AuthEndpoint: ''
-    TokenEndpoint: ''
-    UserApiEndpoint: ''
+    Secret: ""
+    Id: ""
+    Scope: ""
+    AuthEndpoint: ""
+    TokenEndpoint: ""
+    UserApiEndpoint: ""
   GoogleSettings:
     Enable: false
-    Secret: ''
-    Id: ''
+    Secret: ""
+    Id: ""
     Scope: profile email
     AuthEndpoint: https://accounts.google.com/o/oauth2/v2/auth
     TokenEndpoint: https://www.googleapis.com/oauth2/v4/token
@@ -281,8 +281,8 @@ mattermost:
     UserApiEndpoint: https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses,nicknames,metadata
   Office365Settings:
     Enable: false
-    Secret: ''
-    Id: ''
+    Secret: ""
+    Id: ""
     Scope: User.Read
     AuthEndpoint: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
     TokenEndpoint: https://login.microsoftonline.com/common/oauth2/v2.0/token
@@ -290,30 +290,30 @@ mattermost:
   LdapSettings:
     Enable: false
     EnableSync: false
-    LdapServer: ''
+    LdapServer: ""
     LdapPort: 389
-    ConnectionSecurity: ''
-    BaseDN: ''
-    BindUsername: ''
-    BindPassword: ''
-    UserFilter: ''
-    GroupFilter: ''
-    GuestFilter: ''
-    GroupDisplayNameAttribute: ''
-    GroupIdAttribute: ''
-    FirstNameAttribute: ''
-    LastNameAttribute: ''
-    EmailAttribute: ''
-    UsernameAttribute: ''
-    NicknameAttribute: ''
-    IdAttribute: ''
-    PositionAttribute: ''
-    LoginIdAttribute: ''
+    ConnectionSecurity: ""
+    BaseDN: ""
+    BindUsername: ""
+    BindPassword: ""
+    UserFilter: ""
+    GroupFilter: ""
+    GuestFilter: ""
+    GroupDisplayNameAttribute: ""
+    GroupIdAttribute: ""
+    FirstNameAttribute: ""
+    LastNameAttribute: ""
+    EmailAttribute: ""
+    UsernameAttribute: ""
+    NicknameAttribute: ""
+    IdAttribute: ""
+    PositionAttribute: ""
+    LoginIdAttribute: ""
     SyncIntervalMinutes: 60
     SkipCertificateVerification: false
     QueryTimeout: 60
     MaxPageSize: 0
-    LoginFieldName: ''
+    LoginFieldName: ""
     LoginButtonColor: "#0000"
     LoginButtonBorderColor: "#2389D7"
     LoginButtonTextColor: "#2389D7"
@@ -325,7 +325,7 @@ mattermost:
   LocalizationSettings:
     DefaultServerLocale: en
     DefaultClientLocale: en
-    AvailableLocales: ''
+    AvailableLocales: ""
   SamlSettings:
     Enable: false
     EnableSyncWithLdap: false
@@ -333,25 +333,25 @@ mattermost:
     Verify: true
     Encrypt: true
     SignRequest: false
-    IdpUrl: ''
-    IdpDescriptorUrl: ''
-    AssertionConsumerServiceURL: ''
+    IdpUrl: ""
+    IdpDescriptorUrl: ""
+    AssertionConsumerServiceURL: ""
     SignatureAlgorithm: RSAwithSHA1
     CanonicalAlgorithm: Canonical1.0
-    ScopingIDPProviderId: ''
-    ScopingIDPName: ''
-    IdpCertificateFile: ''
-    PublicCertificateFile: ''
-    PrivateKeyFile: ''
-    IdAttribute: ''
-    GuestAttribute: ''
-    FirstNameAttribute: ''
-    LastNameAttribute: ''
-    EmailAttribute: ''
-    UsernameAttribute: ''
-    NicknameAttribute: ''
-    LocaleAttribute: ''
-    PositionAttribute: ''
+    ScopingIDPProviderId: ""
+    ScopingIDPName: ""
+    IdpCertificateFile: ""
+    PublicCertificateFile: ""
+    PrivateKeyFile: ""
+    IdAttribute: ""
+    GuestAttribute: ""
+    FirstNameAttribute: ""
+    LastNameAttribute: ""
+    EmailAttribute: ""
+    UsernameAttribute: ""
+    NicknameAttribute: ""
+    LocaleAttribute: ""
+    PositionAttribute: ""
     LoginButtonText: SAML
     LoginButtonColor: "#34a28b"
     LoginButtonBorderColor: "#2389D7"
@@ -362,11 +362,11 @@ mattermost:
     IosAppDownloadLink: https://about.mattermost.com/mattermost-ios-app/
   ClusterSettings:
     Enable: false
-    ClusterName: ''
-    OverrideHostname: ''
-    NetworkInterface: ''
-    BindAddress: ''
-    AdvertiseAddress: ''
+    ClusterName: ""
+    OverrideHostname: ""
+    NetworkInterface: ""
+    BindAddress: ""
+    AdvertiseAddress: ""
     UseIpAddress: true
     UseExperimentalGossip: false
     ReadOnlyConfig: true
@@ -402,30 +402,30 @@ mattermost:
     UserIndexReplicas: 1
     UserIndexShards: 1
     AggregatePostsAfterDays: 365
-    PostsAggregatorJobStartTime: '03:00'
-    IndexPrefix: ''
+    PostsAggregatorJobStartTime: "03:00"
+    IndexPrefix: ""
     LiveIndexingBatchSize: 1
     BulkIndexingTimeWindowSeconds: 3600
     RequestTimeoutSeconds: 30
     SkipTLSVerification: false
-    Trace: ''
+    Trace: ""
   DataRetentionSettings:
     EnableMessageDeletion: false
     EnableFileDeletion: false
     MessageRetentionDays: 365
     FileRetentionDays: 365
-    DeletionJobStartTime: '02:00'
+    DeletionJobStartTime: "02:00"
   MessageExportSettings:
     EnableExport: false
     ExportFormat: actiance
-    DailyRunTime: '01:00'
+    DailyRunTime: "01:00"
     ExportFromTimestamp: 0
     BatchSize: 10000
     GlobalRelaySettings:
       CustomerType: A9
-      SmtpUsername: ''
-      SmtpPassword: ''
-      EmailAddress: ''
+      SmtpUsername: ""
+      SmtpPassword: ""
+      EmailAddress: ""
   JobSettings:
     RunJobs: true
     RunScheduler: true
@@ -451,9 +451,9 @@ mattermost:
     Enable: false
     AllowEmailAccounts: true
     EnforceMultifactorAuthentication: false
-    RestrictCreationToDomains: ''
+    RestrictCreationToDomains: ""
   ImageProxySettings:
     Enable: false
     ImageProxyType: local
-    RemoteImageProxyURL: ''
-    RemoteImageProxyOptions: ''
+    RemoteImageProxyURL: ""
+    RemoteImageProxyOptions: ""
