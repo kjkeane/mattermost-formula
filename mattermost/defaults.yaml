@@ -149,7 +149,7 @@ mattermost:
     IosMinVersion: ""
   SqlSettings:
     DriverName: mysql
-    # yamllint disable-lint rule:line-length
+    # yamllint disable-line rule:line-length
     DataSource: mmuser:mostest@tcp(localhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s
     DataSourceReplicas: []
     DataSourceSearchReplicas: []
