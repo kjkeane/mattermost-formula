@@ -1,0 +1,14 @@
+[Unit]
+Description=Mattermost
+After=syslog.target network.target {{ mattermost.service.sql }}.service
+
+[Service]
+Type=simple
+WorkingDirectory={{ mattermost.dir.basedir }}
+User=mattermost
+ExecStart={{ mattermost.dir.basedir }}/bin/mattermost
+PIDFile=/var/spool/mattermost/pid/master.pid
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target

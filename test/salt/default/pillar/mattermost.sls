@@ -2,6 +2,26 @@
 # vim: ft=yaml
 ---
 mattermost:
+  pkg:
+    name: mattermost
+    version: '5.18.0'
+
+  user: mattermost
+  group: mattermost
+
+  dir:
+    installdir: /opt
+    basedir: /opt/mattermost
+    configdir: /opt/mattermost/config
+    service: /etc/systemd/system
+
+  service:
+    name: mattermost
+    file: '/etc/systemd/system/mattermost.service'
+    source: salt://mattermost/files/default/systemd.jinja
+    sql: postgresql-10
+
+  # Required settings to start Mattermost
   ServiceSettings:
     SiteURL: ''
     WebsocketURL: ''

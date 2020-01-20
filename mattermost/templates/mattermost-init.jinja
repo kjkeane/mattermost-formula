@@ -1,9 +1,0 @@
-{% from "mattermost/map.jinja" import mattermost with context %}
-
-start on runlevel [2345]
-stop on runlevel [016]
-respawn
-limit nofile 50000 50000
-chdir {{ mattermost.install_dir }}/mattermost
-setuid {{ mattermost.service }}
-exec bin/mattermost
