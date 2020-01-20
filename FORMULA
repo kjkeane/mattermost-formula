@@ -1,9 +1,0 @@
-name: mattermost
-os: Debian, Ubuntu, Raspbian, RedHat, Fedora, CentOS
-os_family: Debian, RedHat
-version: 5.16.2
-release: 1
-minimum_version: 2017.7
-summary: mattermost formula
-description: Formula to install and configure Mattermost
-top_level_dir: mattermost

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
+
 #
 # Setup variables using grains['osfinger'] based logic.
 # You just need to add the key:values for an `osfinger` that differ
